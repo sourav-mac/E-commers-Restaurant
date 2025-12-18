@@ -1,0 +1,28 @@
+{
+  "reviews": [
+    {
+      "name": "sourav",
+      "rating": 4,
+      "review": "good",
+      "createdAt": "2025-12-15T06:46:04.767Z"
+    },
+    {
+      "name": "sourav",
+      "rating": 3,
+      "review": "average",
+      "createdAt": "2025-12-15T06:47:56.168Z"
+    },
+    {
+      "name": "anush",
+      "rating": 2,
+      "review": "bad",
+      "createdAt": "2025-12-15T06:54:50.458Z"
+    },
+    {
+      "name": "De",
+      "rating": 3,
+      "review": "good",
+      "createdAt": "2025-12-15T19:14:18.629Z"
+    }
+  ]
+}

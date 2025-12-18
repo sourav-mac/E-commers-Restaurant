@@ -1,0 +1,1432 @@
+{
+  "orders": [
+    {
+      "order_id": "PETUK-20251213-d3ec1b52",
+      "customer": {
+        "name": "Sourav Mandal",
+        "phone": "9832358231",
+        "email": ""
+      },
+      "items": [
+        {
+          "item_id": 7,
+          "name": "Biriyani",
+          "price": 200,
+          "qty": 1,
+          "itemTotal": 200
+        }
+      ],
+      "subtotal": 200,
+      "tax": 10,
+      "delivery_fee": 30,
+      "discount": 0,
+      "total": 240,
+      "payment_method": "cod",
+      "address": "Rudranagar,Sagar,South 24 pgs",
+      "instructions": "Leave at door",
+      "status": "cancelled",
+      "createdAt": "2025-12-13T21:08:48.957Z",
+      "razorpay_order_id": null,
+      "razorpay_payment_id": null,
+      "razorpay_signature": null,
+      "cancelledAt": "2025-12-13T21:21:42.842Z"
+    },
+    {
+      "order_id": "PETUK-20251213-8e34fdc8",
+      "customer": {
+        "name": "Anush ",
+        "phone": "9832358231",
+        "email": "mandalsourav@gmail.com"
+      },
+      "items": [
+        {
+          "item_id": 2,
+          "name": "Puchka",
+          "price": 40,
+          "qty": 1,
+          "itemTotal": 40
+        },
+        {
+          "item_id": 0,
+          "name": "Chicken Lollipop",
+          "price": 100,
+          "qty": 1,
+          "itemTotal": 100
+        },
+        {
+          "item_id": 3,
+          "name": "Samosa",
+          "price": 15,
+          "qty": 1,
+          "itemTotal": 15
+        },
+        {
+          "item_id": 10,
+          "name": "Chicken Kebab",
+          "price": 200,
+          "qty": 1,
+          "itemTotal": 200
+        },
+        {
+          "item_id": 7,
+          "name": "Biriyani",
+          "price": 200,
+          "qty": 1,
+          "itemTotal": 200
+        }
+      ],
+      "subtotal": 555,
+      "tax": 27.75,
+      "delivery_fee": 30,
+      "discount": 0,
+      "total": 612.75,
+      "payment_method": "cod",
+      "address": "Rudranagar",
+      "instructions": "",
+      "status": "cancelled",
+      "createdAt": "2025-12-13T21:23:27.410Z",
+      "razorpay_order_id": null,
+      "razorpay_payment_id": null,
+      "razorpay_signature": null
+    },
+    {
+      "order_id": "PETUK-20251213-7bb9e7c7",
+      "customer": {
+        "name": "dtdtdtd",
+        "phone": "1111111117",
+        "email": ""
+      },
+      "items": [
+        {
+          "item_id": 2,
+          "name": "Puchka",
+          "price": 40,
+          "qty": 5,
+          "itemTotal": 200
+        }
+      ],
+      "subtotal": 200,
+      "tax": 10,
+      "delivery_fee": 30,
+      "discount": 0,
+      "total": 240,
+      "payment_method": "cod",
+      "address": "ddff",
+      "instructions": "",
+      "status": "delivered",
+      "createdAt": "2025-12-13T21:29:19.095Z",
+      "razorpay_order_id": null,
+      "razorpay_payment_id": null,
+      "razorpay_signature": null,
+      "payment_status": "paid"
+    },
+    {
+      "order_id": "PETUK-20251214-8b7d72ed",
+      "customer": {
+        "name": "Debasmita",
+        "phone": "6296518580",
+        "email": ""
+      },
+      "items": [
+        {
+          "item_id": 2,
+          "name": "Puchka",
+          "price": 40,
+          "qty": 3,
+          "itemTotal": 120
+        }
+      ],
+      "subtotal": 120,
+      "tax": 6,
+      "delivery_fee": 30,
+      "discount": 0,
+      "total": 156,
+      "payment_method": "cod",
+      "address": "harinbari",
+      "instructions": "",
+      "status": "cancelled",
+      "createdAt": "2025-12-14T07:52:04.600Z",
+      "razorpay_order_id": null,
+      "razorpay_payment_id": null,
+      "razorpay_signature": null
+    },
+    {
+      "order_id": "PETUK-20251214-eb0c544b",
+      "customer": {
+        "name": "mayun",
+        "phone": "2346473458",
+        "email": ""
+      },
+      "items": [
+        {
+          "item_id": 4,
+          "name": "Chicken Chowmein",
+          "price": 80,
+          "qty": 2,
+          "itemTotal": 160
+        }
+      ],
+      "subtotal": 160,
+      "tax": 8,
+      "delivery_fee": 30,
+      "discount": 0,
+      "total": 198,
+      "payment_method": "cod",
+      "address": "rudranagar",
+      "instructions": "",
+      "status": "delivered",
+      "createdAt": "2025-12-14T07:55:11.544Z",
+      "razorpay_order_id": null,
+      "razorpay_payment_id": null,
+      "razorpay_signature": null,
+      "payment_status": "paid"
+    },
+    {
+      "order_id": "PETUK-20251214-d8d61eaa",
+      "customer": {
+        "name": "ffj",
+        "phone": "6666666668",
+        "email": ""
+      },
+      "items": [
+        {
+          "item_id": 0,
+          "name": "Chicken Lollipop",
+          "price": 100,
+          "qty": 4,
+          "itemTotal": 400
+        }
+      ],
+      "subtotal": 400,
+      "tax": 20,
+      "delivery_fee": 30,
+      "discount": 0,
+      "total": 450,
+      "payment_method": "cod",
+      "address": "ffff",
+      "instructions": "",
+      "status": "cancelled",
+      "createdAt": "2025-12-14T09:50:47.813Z",
+      "razorpay_order_id": null,
+      "razorpay_payment_id": null,
+      "razorpay_signature": null
+    },
+    {
+      "order_id": "PETUK-20251214-1cd2e91d",
+      "customer": {
+        "name": "454545",
+        "phone": "4444444444",
+        "email": ""
+      },
+      "items": [
+        {
+          "item_id": 0,
+          "name": "Chicken Lollipop",
+          "price": 100,
+          "qty": 7,
+          "itemTotal": 700
+        }
+      ],
+      "subtotal": 700,
+      "tax": 35,
+      "delivery_fee": 30,
+      "discount": 0,
+      "total": 765,
+      "payment_method": "cod",
+      "address": "433242f",
+      "instructions": "",
+      "status": "delivered",
+      "createdAt": "2025-12-14T10:09:09.333Z",
+      "razorpay_order_id": null,
+      "razorpay_payment_id": null,
+      "razorpay_signature": null,
+      "payment_status": "paid"
+    },
+    {
+      "order_id": "PETUK-20251214-85eb495c",
+      "customer": {
+        "name": "sourav",
+        "phone": "9832345432",
+        "email": ""
+      },
+      "items": [
+        {
+          "item_id": 3,
+          "name": "Samosa",
+          "price": 15,
+          "qty": 1,
+          "itemTotal": 15
+        },
+        {
+          "item_id": 2,
+          "name": "Puchka",
+          "price": 40,
+          "qty": 5,
+          "itemTotal": 200
+        }
+      ],
+      "subtotal": 215,
+      "tax": 10.75,
+      "delivery_fee": 30,
+      "discount": 0,
+      "total": 255.75,
+      "payment_method": "cod",
+      "address": "rudra",
+      "instructions": "",
+      "status": "ready",
+      "createdAt": "2025-12-14T10:15:04.487Z",
+      "razorpay_order_id": null,
+      "razorpay_payment_id": null,
+      "razorpay_signature": null,
+      "payment_status": "paid"
+    },
+    {
+      "order_id": "PETUK-20251214-476fb7da",
+      "customer": {
+        "name": "tre",
+        "phone": "5555555555",
+        "email": ""
+      },
+      "items": [
+        {
+          "item_id": 0,
+          "name": "Chicken Lollipop",
+          "price": 100,
+          "qty": 1,
+          "itemTotal": 100
+        }
+      ],
+      "subtotal": 100,
+      "tax": 5,
+      "delivery_fee": 30,
+      "discount": 0,
+      "total": 135,
+      "payment_method": "cod",
+      "address": "vcvcvvc",
+      "instructions": "",
+      "status": "confirmed",
+      "createdAt": "2025-12-14T12:34:34.113Z",
+      "razorpay_order_id": null,
+      "razorpay_payment_id": null,
+      "razorpay_signature": null
+    },
+    {
+      "order_id": "PETUK-20251214-6697cfcc",
+      "customer": {
+        "name": "tuli",
+        "phone": "7654345678",
+        "email": ""
+      },
+      "items": [
+        {
+          "item_id": 0,
+          "name": "Chicken Lollipop",
+          "price": 100,
+          "qty": 1,
+          "itemTotal": 100
+        },
+        {
+          "item_id": 2,
+          "name": "Puchka",
+          "price": 40,
+          "qty": 1,
+          "itemTotal": 40
+        }
+      ],
+      "subtotal": 140,
+      "tax": 7,
+      "delivery_fee": 30,
+      "discount": 0,
+      "total": 177,
+      "payment_method": "cod",
+      "address": "tentultala",
+      "instructions": "",
+      "status": "delivered",
+      "createdAt": "2025-12-14T19:31:47.379Z",
+      "razorpay_order_id": null,
+      "razorpay_payment_id": null,
+      "razorpay_signature": null,
+      "payment_status": "paid"
+    },
+    {
+      "order_id": "PETUK-20251214-debcd9a3",
+      "customer": {
+        "name": "moon",
+        "phone": "6296518580",
+        "email": ""
+      },
+      "items": [
+        {
+          "item_id": 6,
+          "name": "Chai",
+          "price": 30,
+          "qty": 6,
+          "itemTotal": 180
+        }
+      ],
+      "subtotal": 180,
+      "tax": 9,
+      "delivery_fee": 30,
+      "discount": 0,
+      "total": 219,
+      "payment_method": "razorpay",
+      "address": "Harinbari",
+      "instructions": "",
+      "status": "confirmed",
+      "createdAt": "2025-12-14T20:17:04.545Z",
+      "razorpay_order_id": "order_RrcWWNh3xwPiVO",
+      "razorpay_payment_id": null,
+      "razorpay_signature": null,
+      "payment_status": "paid"
+    },
+    {
+      "order_id": "PETUK-20251214-40bd822e",
+      "customer": {
+        "name": "Sourav",
+        "phone": "9832358231",
+        "email": ""
+      },
+      "items": [
+        {
+          "item_id": 6,
+          "name": "Chai",
+          "price": 30,
+          "qty": 6,
+          "itemTotal": 180
+        }
+      ],
+      "subtotal": 180,
+      "tax": 9,
+      "delivery_fee": 30,
+      "discount": 0,
+      "total": 219,
+      "payment_method": "razorpay",
+      "address": "Tentultala",
+      "instructions": "",
+      "status": "confirmed",
+      "createdAt": "2025-12-14T20:49:32.154Z",
+      "razorpay_order_id": "order_Rrd4iCUNGBkO9X",
+      "razorpay_payment_id": null,
+      "razorpay_signature": null,
+      "payment_status": "paid"
+    },
+    {
+      "order_id": "PETUK-20251214-c851c46d",
+      "customer": {
+        "name": "Sourav",
+        "phone": "9832358231",
+        "email": ""
+      },
+      "items": [
+        {
+          "item_id": 6,
+          "name": "Chai",
+          "price": 30,
+          "qty": 6,
+          "itemTotal": 180
+        }
+      ],
+      "subtotal": 180,
+      "tax": 9,
+      "delivery_fee": 30,
+      "discount": 0,
+      "total": 219,
+      "payment_method": "cod",
+      "address": "Tentultala",
+      "instructions": "",
+      "status": "confirmed",
+      "createdAt": "2025-12-14T20:49:47.250Z",
+      "razorpay_order_id": null,
+      "razorpay_payment_id": null,
+      "razorpay_signature": null
+    },
+    {
+      "order_id": "PETUK-20251214-f904fd48",
+      "customer": {
+        "name": "poli",
+        "phone": "9832358231",
+        "email": ""
+      },
+      "items": [
+        {
+          "item_id": 0,
+          "name": "Chicken Lollipop",
+          "price": 100,
+          "qty": 1,
+          "itemTotal": 100
+        }
+      ],
+      "subtotal": 100,
+      "tax": 5,
+      "delivery_fee": 30,
+      "discount": 0,
+      "total": 135,
+      "payment_method": "cod",
+      "address": "ddffdddf",
+      "instructions": "",
+      "status": "confirmed",
+      "createdAt": "2025-12-14T20:57:23.648Z",
+      "razorpay_order_id": null,
+      "razorpay_payment_id": null,
+      "razorpay_signature": null
+    },
+    {
+      "order_id": "PETUK-20251214-ae8da94c",
+      "customer": {
+        "name": "baba",
+        "phone": "7585014802",
+        "email": ""
+      },
+      "items": [
+        {
+          "item_id": 0,
+          "name": "Chicken Lollipop",
+          "price": 100,
+          "qty": 3,
+          "itemTotal": 300
+        }
+      ],
+      "subtotal": 300,
+      "tax": 15,
+      "delivery_fee": 30,
+      "discount": 0,
+      "total": 345,
+      "payment_method": "cod",
+      "address": "dtd",
+      "instructions": "",
+      "status": "confirmed",
+      "createdAt": "2025-12-14T20:58:58.792Z",
+      "razorpay_order_id": null,
+      "razorpay_payment_id": null,
+      "razorpay_signature": null
+    },
+    {
+      "order_id": "PETUK-20251214-8821dd48",
+      "customer": {
+        "name": "ffgfffgf",
+        "phone": "9832358231",
+        "email": ""
+      },
+      "items": [
+        {
+          "item_id": 0,
+          "name": "Chicken Lollipop",
+          "price": 100,
+          "qty": 4,
+          "itemTotal": 400
+        }
+      ],
+      "subtotal": 400,
+      "tax": 20,
+      "delivery_fee": 30,
+      "discount": 0,
+      "total": 450,
+      "payment_method": "cod",
+      "address": "fffffffffff",
+      "instructions": "",
+      "status": "confirmed",
+      "createdAt": "2025-12-14T21:00:26.497Z",
+      "razorpay_order_id": null,
+      "razorpay_payment_id": null,
+      "razorpay_signature": null
+    },
+    {
+      "order_id": "PETUK-20251214-4c8b48ce",
+      "customer": {
+        "name": "dg",
+        "phone": "9832358231",
+        "email": ""
+      },
+      "items": [
+        {
+          "item_id": 0,
+          "name": "Chicken Lollipop",
+          "price": 100,
+          "qty": 4,
+          "itemTotal": 400
+        }
+      ],
+      "subtotal": 400,
+      "tax": 20,
+      "delivery_fee": 30,
+      "discount": 0,
+      "total": 450,
+      "payment_method": "cod",
+      "address": "fg",
+      "instructions": "",
+      "status": "cancelled",
+      "createdAt": "2025-12-14T21:03:05.800Z",
+      "razorpay_order_id": null,
+      "razorpay_payment_id": null,
+      "razorpay_signature": null
+    },
+    {
+      "order_id": "PETUK-20251214-526d5f24",
+      "customer": {
+        "name": "Anush Pradhan",
+        "phone": "7319229955",
+        "email": ""
+      },
+      "items": [
+        {
+          "item_id": 1,
+          "name": "Fried Rice",
+          "price": 120,
+          "qty": 1,
+          "itemTotal": 120
+        },
+        {
+          "item_id": 4,
+          "name": "Chicken Chowmein",
+          "price": 80,
+          "qty": 1,
+          "itemTotal": 80
+        },
+        {
+          "item_id": 9,
+          "name": "Chicken Sandwich",
+          "price": 100,
+          "qty": 1,
+          "itemTotal": 100
+        },
+        {
+          "item_id": 5,
+          "name": "Lassi",
+          "price": 80,
+          "qty": 1,
+          "itemTotal": 80
+        },
+        {
+          "item_id": 6,
+          "name": "Chai",
+          "price": 30,
+          "qty": 1,
+          "itemTotal": 30
+        },
+        {
+          "item_id": 8,
+          "name": "Ice Cream",
+          "price": 50,
+          "qty": 1,
+          "itemTotal": 50
+        }
+      ],
+      "subtotal": 460,
+      "tax": 23,
+      "delivery_fee": 30,
+      "discount": 0,
+      "total": 513,
+      "payment_method": "cod",
+      "address": "Opposite of Sagar Police Station",
+      "instructions": "",
+      "status": "confirmed",
+      "createdAt": "2025-12-14T21:13:51.131Z",
+      "razorpay_order_id": null,
+      "razorpay_payment_id": null,
+      "razorpay_signature": null
+    },
+    {
+      "order_id": "PETUK-20251215-0bc50ad9",
+      "customer": {
+        "name": "hghfhfhf",
+        "phone": "4444444444",
+        "email": ""
+      },
+      "items": [
+        {
+          "item_id": 0,
+          "name": "Chicken Lollipop",
+          "price": 100,
+          "qty": 3,
+          "itemTotal": 300
+        }
+      ],
+      "subtotal": 300,
+      "tax": 15,
+      "delivery_fee": 30,
+      "discount": 0,
+      "total": 345,
+      "payment_method": "razorpay",
+      "address": "yyfyy",
+      "instructions": "",
+      "status": "confirmed",
+      "createdAt": "2025-12-15T18:50:30.183Z",
+      "razorpay_order_id": "order_Rrza603LMwDUwi",
+      "razorpay_payment_id": null,
+      "razorpay_signature": null,
+      "payment_status": "paid"
+    },
+    {
+      "order_id": "PETUK-20251215-d77e91d6",
+      "customer": {
+        "name": "egar",
+        "phone": "3333333333",
+        "email": ""
+      },
+      "items": [
+        {
+          "item_id": 0,
+          "name": "Chicken Lollipop",
+          "price": 100,
+          "qty": 3,
+          "itemTotal": 300
+        }
+      ],
+      "subtotal": 300,
+      "tax": 15,
+      "delivery_fee": 30,
+      "discount": 0,
+      "total": 345,
+      "payment_method": "cod",
+      "address": "ffgg",
+      "instructions": "",
+      "status": "ready",
+      "createdAt": "2025-12-15T20:56:18.951Z",
+      "razorpay_order_id": null,
+      "razorpay_payment_id": null,
+      "razorpay_signature": null
+    },
+    {
+      "order_id": "PETUK-20251215-67412a59",
+      "customer": {
+        "name": "fgffgg",
+        "phone": "6556566556",
+        "email": ""
+      },
+      "items": [
+        {
+          "item_id": 7,
+          "name": "Biriyani",
+          "price": 200,
+          "qty": 3,
+          "itemTotal": 600
+        }
+      ],
+      "subtotal": 600,
+      "tax": 30,
+      "delivery_fee": 30,
+      "discount": 0,
+      "total": 660,
+      "payment_method": "cod",
+      "address": "ccc",
+      "instructions": "",
+      "status": "preparing",
+      "createdAt": "2025-12-15T21:09:23.563Z",
+      "razorpay_order_id": null,
+      "razorpay_payment_id": null,
+      "razorpay_signature": null,
+      "internalNotes": "good"
+    },
+    {
+      "order_id": "PETUK-20251217-51af9faa",
+      "customer": {
+        "name": "Mamu",
+        "phone": "9832358231",
+        "email": ""
+      },
+      "items": [
+        {
+          "item_id": 0,
+          "name": "Chicken Lollipop",
+          "price": 100,
+          "qty": 5,
+          "itemTotal": 500
+        }
+      ],
+      "subtotal": 500,
+      "tax": 25,
+      "delivery_fee": 30,
+      "discount": 0,
+      "total": 555,
+      "payment_method": "cod",
+      "address": "ffff",
+      "instructions": "",
+      "status": "placed",
+      "createdAt": "2025-12-17T12:42:30.401Z",
+      "razorpay_order_id": null,
+      "razorpay_payment_id": null,
+      "razorpay_signature": null
+    },
+    {
+      "order_id": "PETUK-20251217-4839edce",
+      "customer": {
+        "name": "virat",
+        "phone": "9832358231",
+        "email": ""
+      },
+      "items": [
+        {
+          "item_id": 0,
+          "name": "Chicken Lollipop",
+          "price": 100,
+          "qty": 3,
+          "itemTotal": 300
+        }
+      ],
+      "subtotal": 300,
+      "tax": 15,
+      "delivery_fee": 30,
+      "discount": 0,
+      "total": 345,
+      "payment_method": "cod",
+      "address": "hgghg",
+      "instructions": "",
+      "status": "placed",
+      "createdAt": "2025-12-17T12:46:37.213Z",
+      "razorpay_order_id": null,
+      "razorpay_payment_id": null,
+      "razorpay_signature": null
+    },
+    {
+      "order_id": "PETUK-20251217-3718eaed",
+      "customer": {
+        "name": "rohhit",
+        "phone": "9832358231",
+        "email": ""
+      },
+      "items": [
+        {
+          "item_id": 1,
+          "name": "Fried Rice",
+          "price": 120,
+          "qty": 3,
+          "itemTotal": 360
+        }
+      ],
+      "subtotal": 360,
+      "tax": 18,
+      "delivery_fee": 30,
+      "discount": 0,
+      "total": 408,
+      "payment_method": "cod",
+      "address": "hgghhghjjj",
+      "instructions": "",
+      "status": "placed",
+      "createdAt": "2025-12-17T12:49:42.968Z",
+      "razorpay_order_id": null,
+      "razorpay_payment_id": null,
+      "razorpay_signature": null
+    },
+    {
+      "order_id": "PETUK-20251217-3e0e2165",
+      "customer": {
+        "name": "Sourav",
+        "phone": "9832358231",
+        "email": ""
+      },
+      "items": [
+        {
+          "item_id": 7,
+          "name": "Biriyani",
+          "price": 200,
+          "qty": 1,
+          "itemTotal": 200
+        }
+      ],
+      "subtotal": 200,
+      "tax": 10,
+      "delivery_fee": 30,
+      "discount": 0,
+      "total": 240,
+      "payment_method": "cod",
+      "address": "tdgn",
+      "instructions": "",
+      "status": "placed",
+      "createdAt": "2025-12-17T12:52:35.874Z",
+      "razorpay_order_id": null,
+      "razorpay_payment_id": null,
+      "razorpay_signature": null
+    },
+    {
+      "order_id": "PETUK-20251217-dba4d0ac",
+      "customer": {
+        "name": "gffggf",
+        "phone": "9832358231",
+        "email": ""
+      },
+      "items": [
+        {
+          "item_id": 7,
+          "name": "Biriyani",
+          "price": 200,
+          "qty": 1,
+          "itemTotal": 200
+        }
+      ],
+      "subtotal": 200,
+      "tax": 10,
+      "delivery_fee": 30,
+      "discount": 0,
+      "total": 240,
+      "payment_method": "cod",
+      "address": "ffdfdfd",
+      "instructions": "",
+      "status": "placed",
+      "createdAt": "2025-12-17T12:56:10.826Z",
+      "razorpay_order_id": null,
+      "razorpay_payment_id": null,
+      "razorpay_signature": null
+    },
+    {
+      "order_id": "PETUK-20251217-330f63d6",
+      "customer": {
+        "name": "Tiger",
+        "phone": "9832358231",
+        "email": ""
+      },
+      "items": [
+        {
+          "item_id": 2,
+          "name": "Puchka",
+          "price": 40,
+          "qty": 3,
+          "itemTotal": 120
+        }
+      ],
+      "subtotal": 120,
+      "tax": 6,
+      "delivery_fee": 30,
+      "discount": 0,
+      "total": 156,
+      "payment_method": "cod",
+      "address": "gffgffgf",
+      "instructions": "",
+      "status": "placed",
+      "createdAt": "2025-12-17T13:04:31.069Z",
+      "razorpay_order_id": null,
+      "razorpay_payment_id": null,
+      "razorpay_signature": null
+    },
+    {
+      "order_id": "PETUK-20251217-8c4eba9e",
+      "customer": {
+        "name": "ghggghhggh",
+        "phone": "9832358231",
+        "email": ""
+      },
+      "items": [
+        {
+          "item_id": 7,
+          "name": "Biriyani",
+          "price": 200,
+          "qty": 1,
+          "itemTotal": 200
+        }
+      ],
+      "subtotal": 200,
+      "tax": 10,
+      "delivery_fee": 30,
+      "discount": 0,
+      "total": 240,
+      "payment_method": "cod",
+      "address": " To Get the Exact Logs I Need:\nClear the console — Click the trash icon in DevTools Console\nHard refresh the admin dashboard: Ctrl+Shift+R (or Cmd+Shift+R on Mac)\nWait 2 seconds for the page to fully load\nCopy ALL console logs from the top (you should see bright cyan/green logs from my code)\nPaste them here in your next message\n",
+      "instructions": "",
+      "status": "placed",
+      "createdAt": "2025-12-17T20:49:02.934Z",
+      "razorpay_order_id": null,
+      "razorpay_payment_id": null,
+      "razorpay_signature": null
+    },
+    {
+      "order_id": "PETUK-20251217-b8bb4fbe",
+      "customer": {
+        "name": "dashboard.js:41 ✅ EventSource connected to /api/admin/orders/events dashboard.js:103 🔌 Closing EventSource dashboard.js:41 ✅ EventSource connected to /api/admin/orders/events favicon.ico:1  GET http://localhost:3000/favicon.ico 404 (Not Found)",
+        "phone": "7676767676",
+        "email": ""
+      },
+      "items": [
+        {
+          "item_id": 0,
+          "name": "Chicken Lollipop",
+          "price": 100,
+          "qty": 1,
+          "itemTotal": 100
+        }
+      ],
+      "subtotal": 100,
+      "tax": 5,
+      "delivery_fee": 30,
+      "discount": 0,
+      "total": 135,
+      "payment_method": "cod",
+      "address": "dashboard.js:41 ✅ EventSource connected to /api/admin/orders/events\ndashboard.js:103 🔌 Closing EventSource\ndashboard.js:41 ✅ EventSource connected to /api/admin/orders/events\nfavicon.ico:1  GET http://localhost:3000/favicon.ico 404 (Not Found)\n",
+      "instructions": "",
+      "status": "placed",
+      "createdAt": "2025-12-17T20:54:09.598Z",
+      "razorpay_order_id": null,
+      "razorpay_payment_id": null,
+      "razorpay_signature": null
+    },
+    {
+      "order_id": "PETUK-20251217-7c8f2698",
+      "customer": {
+        "name": "fd",
+        "phone": "7887788787",
+        "email": ""
+      },
+      "items": [
+        {
+          "item_id": 0,
+          "name": "Chicken Lollipop",
+          "price": 100,
+          "qty": 1,
+          "itemTotal": 100
+        }
+      ],
+      "subtotal": 100,
+      "tax": 5,
+      "delivery_fee": 30,
+      "discount": 0,
+      "total": 135,
+      "payment_method": "cod",
+      "address": "dsdsds",
+      "instructions": "",
+      "status": "placed",
+      "createdAt": "2025-12-17T21:00:41.073Z",
+      "razorpay_order_id": null,
+      "razorpay_payment_id": null,
+      "razorpay_signature": null
+    },
+    {
+      "order_id": "PETUK-20251217-ef23c25f",
+      "customer": {
+        "name": "Sourav",
+        "phone": "3465768909",
+        "email": ""
+      },
+      "items": [
+        {
+          "item_id": 1,
+          "name": "Fried Rice",
+          "price": 120,
+          "qty": 1,
+          "itemTotal": 120
+        }
+      ],
+      "subtotal": 120,
+      "tax": 6,
+      "delivery_fee": 30,
+      "discount": 0,
+      "total": 156,
+      "payment_method": "cod",
+      "address": "ffggf",
+      "instructions": "",
+      "status": "placed",
+      "createdAt": "2025-12-17T21:05:23.312Z",
+      "razorpay_order_id": null,
+      "razorpay_payment_id": null,
+      "razorpay_signature": null
+    },
+    {
+      "order_id": "PETUK-20251217-41dc2a85",
+      "customer": {
+        "name": "fgffgfgfgfffgf",
+        "phone": "4554454545",
+        "email": ""
+      },
+      "items": [
+        {
+          "item_id": 0,
+          "name": "Chicken Lollipop",
+          "price": 100,
+          "qty": 1,
+          "itemTotal": 100
+        }
+      ],
+      "subtotal": 100,
+      "tax": 5,
+      "delivery_fee": 30,
+      "discount": 0,
+      "total": 135,
+      "payment_method": "cod",
+      "address": "ghtrere",
+      "instructions": "",
+      "status": "placed",
+      "createdAt": "2025-12-17T21:12:35.307Z",
+      "razorpay_order_id": null,
+      "razorpay_payment_id": null,
+      "razorpay_signature": null
+    },
+    {
+      "order_id": "PETUK-20251217-c447008d",
+      "customer": {
+        "name": "fd",
+        "phone": "3434567890",
+        "email": ""
+      },
+      "items": [
+        {
+          "item_id": 7,
+          "name": "Biriyani",
+          "price": 200,
+          "qty": 1,
+          "itemTotal": 200
+        }
+      ],
+      "subtotal": 200,
+      "tax": 10,
+      "delivery_fee": 30,
+      "discount": 0,
+      "total": 240,
+      "payment_method": "cod",
+      "address": "sdggdgg",
+      "instructions": "",
+      "status": "placed",
+      "createdAt": "2025-12-17T21:18:09.570Z",
+      "razorpay_order_id": null,
+      "razorpay_payment_id": null,
+      "razorpay_signature": null
+    },
+    {
+      "order_id": "PETUK-20251217-54ab0999",
+      "customer": {
+        "name": "dffds",
+        "phone": "4343434343",
+        "email": ""
+      },
+      "items": [
+        {
+          "item_id": 7,
+          "name": "Biriyani",
+          "price": 200,
+          "qty": 1,
+          "itemTotal": 200
+        }
+      ],
+      "subtotal": 200,
+      "tax": 10,
+      "delivery_fee": 30,
+      "discount": 0,
+      "total": 240,
+      "payment_method": "cod",
+      "address": "fdgdgdd",
+      "instructions": "",
+      "status": "placed",
+      "createdAt": "2025-12-17T21:26:49.267Z",
+      "razorpay_order_id": null,
+      "razorpay_payment_id": null,
+      "razorpay_signature": null
+    },
+    {
+      "order_id": "PETUK-20251217-ba82533a",
+      "customer": {
+        "name": "fxxf",
+        "phone": "4545445555",
+        "email": ""
+      },
+      "items": [
+        {
+          "item_id": 0,
+          "name": "Chicken Lollipop",
+          "price": 100,
+          "qty": 1,
+          "itemTotal": 100
+        }
+      ],
+      "subtotal": 100,
+      "tax": 5,
+      "delivery_fee": 30,
+      "discount": 0,
+      "total": 135,
+      "payment_method": "cod",
+      "address": "xvxcvxvx",
+      "instructions": "",
+      "status": "placed",
+      "createdAt": "2025-12-17T21:29:15.142Z",
+      "razorpay_order_id": null,
+      "razorpay_payment_id": null,
+      "razorpay_signature": null
+    },
+    {
+      "order_id": "PETUK-20251217-0a6a4af2",
+      "customer": {
+        "name": "fed",
+        "phone": "3434343434",
+        "email": ""
+      },
+      "items": [
+        {
+          "item_id": 1,
+          "name": "Fried Rice",
+          "price": 120,
+          "qty": 1,
+          "itemTotal": 120
+        }
+      ],
+      "subtotal": 120,
+      "tax": 6,
+      "delivery_fee": 30,
+      "discount": 0,
+      "total": 156,
+      "payment_method": "cod",
+      "address": "fdds",
+      "instructions": "",
+      "status": "confirmed",
+      "createdAt": "2025-12-17T21:32:46.547Z",
+      "razorpay_order_id": null,
+      "razorpay_payment_id": null,
+      "razorpay_signature": null
+    },
+    {
+      "order_id": "PETUK-20251217-152a35f7",
+      "customer": {
+        "name": "344445",
+        "phone": "2323233232",
+        "email": ""
+      },
+      "items": [
+        {
+          "item_id": 0,
+          "name": "Chicken Lollipop",
+          "price": 100,
+          "qty": 1,
+          "itemTotal": 100
+        }
+      ],
+      "subtotal": 100,
+      "tax": 5,
+      "delivery_fee": 30,
+      "discount": 0,
+      "total": 135,
+      "payment_method": "cod",
+      "address": "xfdgdggh",
+      "instructions": "",
+      "status": "placed",
+      "createdAt": "2025-12-17T21:36:14.045Z",
+      "razorpay_order_id": null,
+      "razorpay_payment_id": null,
+      "razorpay_signature": null
+    },
+    {
+      "order_id": "PETUK-20251217-9b446e4f",
+      "customer": {
+        "name": "sourav",
+        "phone": "4545454554",
+        "email": ""
+      },
+      "items": [
+        {
+          "item_id": 7,
+          "name": "Biriyani",
+          "price": 200,
+          "qty": 1,
+          "itemTotal": 200
+        }
+      ],
+      "subtotal": 200,
+      "tax": 10,
+      "delivery_fee": 30,
+      "discount": 0,
+      "total": 240,
+      "payment_method": "cod",
+      "address": "cxzv",
+      "instructions": "",
+      "status": "placed",
+      "createdAt": "2025-12-17T21:53:58.605Z",
+      "razorpay_order_id": null,
+      "razorpay_payment_id": null,
+      "razorpay_signature": null
+    },
+    {
+      "order_id": "PETUK-20251218-95325306",
+      "customer": {
+        "name": "fdfd",
+        "phone": "2345678765",
+        "email": ""
+      },
+      "items": [
+        {
+          "item_id": 7,
+          "name": "Biriyani",
+          "price": 200,
+          "qty": 1,
+          "itemTotal": 200
+        }
+      ],
+      "subtotal": 200,
+      "tax": 10,
+      "delivery_fee": 30,
+      "discount": 0,
+      "total": 240,
+      "payment_method": "cod",
+      "address": "rrererere",
+      "instructions": "",
+      "status": "placed",
+      "createdAt": "2025-12-18T07:34:24.924Z",
+      "razorpay_order_id": null,
+      "razorpay_payment_id": null,
+      "razorpay_signature": null
+    }
+  ],
+  "reservations": [
+    {
+      "id": "ddb200d7",
+      "name": "sourav",
+      "phone": "+919832358231",
+      "originalPhone": "9832358231",
+      "date": "2025-12-23",
+      "time": "20:34",
+      "size": "1",
+      "note": "",
+      "status": "cancelled",
+      "createdAt": "2025-12-15T11:00:48.659Z",
+      "updatedAt": "2025-12-15T11:03:09.400Z"
+    },
+    {
+      "id": "b560e761",
+      "name": "sourav",
+      "phone": "+919832358231",
+      "originalPhone": "9832358231",
+      "date": "2025-12-29",
+      "time": "20:36",
+      "size": "3",
+      "note": "Give me a corner seat",
+      "status": "cancelled",
+      "createdAt": "2025-12-15T11:06:34.278Z",
+      "updatedAt": "2025-12-15T11:07:27.905Z"
+    },
+    {
+      "id": "5a859b30",
+      "name": "Dilip",
+      "phone": "+919733674981",
+      "originalPhone": "9733674981",
+      "date": "2025-12-18",
+      "time": "05:28",
+      "size": "5+",
+      "note": "",
+      "status": "cancelled",
+      "createdAt": "2025-12-15T18:53:30.811Z",
+      "updatedAt": "2025-12-15T18:56:10.931Z"
+    },
+    {
+      "id": "da86cfc3",
+      "name": "sourav",
+      "phone": "+919832358231",
+      "originalPhone": "9832358231",
+      "date": "2026-01-02",
+      "time": "07:17",
+      "size": "1",
+      "note": "",
+      "status": "pending",
+      "createdAt": "2025-12-17T21:47:23.702Z",
+      "updatedAt": "2025-12-17T21:47:23.702Z"
+    },
+    {
+      "id": "6aa775a9",
+      "name": "anush",
+      "phone": "+919832358231",
+      "originalPhone": "9832358231",
+      "date": "2025-12-20",
+      "time": "09:17",
+      "size": "1",
+      "note": "",
+      "status": "pending",
+      "createdAt": "2025-12-17T21:48:04.024Z",
+      "updatedAt": "2025-12-17T21:48:04.024Z"
+    },
+    {
+      "id": "43fe77ca",
+      "name": "sourav",
+      "phone": "+919832358231",
+      "originalPhone": "9832358231",
+      "date": "2025-12-26",
+      "time": "07:18",
+      "size": "1",
+      "note": "",
+      "status": "pending",
+      "createdAt": "2025-12-17T21:48:49.817Z",
+      "updatedAt": "2025-12-17T21:48:49.817Z"
+    },
+    {
+      "id": "69d79268",
+      "name": "sourav",
+      "phone": "+919832358231",
+      "originalPhone": "9832358231",
+      "date": "2025-12-19",
+      "time": "07:22",
+      "size": "1",
+      "note": "",
+      "status": "pending",
+      "createdAt": "2025-12-17T21:52:45.726Z",
+      "updatedAt": "2025-12-17T21:52:45.726Z"
+    },
+    {
+      "id": "f1ed2d9a",
+      "name": "sourav",
+      "phone": "+919832358231",
+      "originalPhone": "9832358231",
+      "date": "2026-01-03",
+      "time": "07:23",
+      "size": "1",
+      "note": "",
+      "status": "pending",
+      "createdAt": "2025-12-17T21:53:19.409Z",
+      "updatedAt": "2025-12-17T21:53:19.409Z"
+    },
+    {
+      "id": "6b7fdf1e",
+      "name": "Dilip",
+      "phone": "+919832358231",
+      "originalPhone": "9832358231",
+      "date": "2025-12-18",
+      "time": "09:25",
+      "size": "1",
+      "note": "",
+      "status": "pending",
+      "createdAt": "2025-12-17T21:55:44.873Z",
+      "updatedAt": "2025-12-17T21:55:44.873Z"
+    },
+    {
+      "id": "4d0437e0",
+      "name": "sourav",
+      "phone": "+919832358231",
+      "originalPhone": "9832358231",
+      "date": "2025-12-19",
+      "time": "17:06",
+      "size": "1",
+      "note": "",
+      "status": "pending",
+      "createdAt": "2025-12-18T07:32:46.067Z",
+      "updatedAt": "2025-12-18T07:32:46.067Z"
+    },
+    {
+      "id": "1ede84ca",
+      "name": "sourav",
+      "phone": "+919832358231",
+      "originalPhone": "9832358231",
+      "date": "2025-12-19",
+      "time": "14:03",
+      "size": "1",
+      "note": "",
+      "status": "pending",
+      "createdAt": "2025-12-18T07:33:25.489Z",
+      "updatedAt": "2025-12-18T07:33:25.489Z"
+    },
+    {
+      "id": "bd5c7f47",
+      "name": "sourav",
+      "phone": "+919832358231",
+      "originalPhone": "9832358231",
+      "date": "2025-12-19",
+      "time": "16:09",
+      "size": "1",
+      "note": "",
+      "status": "pending",
+      "createdAt": "2025-12-18T07:37:03.448Z",
+      "updatedAt": "2025-12-18T07:37:03.448Z"
+    },
+    {
+      "id": "38bc9edf",
+      "name": "Dilip",
+      "phone": "+919832358231",
+      "originalPhone": "9832358231",
+      "date": "2025-12-25",
+      "time": "10:07",
+      "size": "1",
+      "note": "",
+      "status": "pending",
+      "createdAt": "2025-12-18T07:37:40.237Z",
+      "updatedAt": "2025-12-18T07:37:40.237Z"
+    }
+  ]
+}

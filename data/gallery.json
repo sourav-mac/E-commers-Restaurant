@@ -1,0 +1,12 @@
+{
+  "items": [
+    { "src": "https://via.placeholder.com/300x300?text=Restaurant", "alt": "Restaurant interior" },
+    { "src": "/images/lollipop.jpg", "alt": "Chicken Lollipop dish" },
+    { "src": "https://via.placeholder.com/300x300?text=Fried+Rice", "alt": "Fried Rice" },
+    { "src": "https://via.placeholder.com/300x300?text=Dining+Area", "alt": "Dining area" },
+    { "src": "https://via.placeholder.com/300x300?text=Kitchen", "alt": "Kitchen prep" },
+    { "src": "https://via.placeholder.com/300x300?text=Customer", "alt": "Customer enjoying meal" },
+    { "src": "https://via.placeholder.com/300x300?text=Entrance", "alt": "Entrance" },
+    { "src": "https://via.placeholder.com/300x300?text=Food+Display", "alt": "Food display" }
+  ]
+}

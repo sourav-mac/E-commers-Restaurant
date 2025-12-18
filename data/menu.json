@@ -1,0 +1,93 @@
+{
+  "categories": [
+    "Starters",
+    "Main Course",
+    "Rice & Noodles",
+    "Breads",
+    "Beverages",
+    "Desserts"
+  ],
+  "items": [
+    {
+      "_id": "item_001",
+      "name": "Chicken Lollipop",
+      "category": "Starters",
+      "price": 100,
+      "image": "/images/chicken-lollipop.jpg",
+      "available": true
+    },
+    {
+      "_id": "item_002",
+      "name": "Fried Rice",
+      "category": "Rice & Noodles",
+      "price": 120,
+      "image": "/images/fried-rice.jpg",
+      "available": true
+    },
+    {
+      "_id": "item_003",
+      "name": "Puchka",
+      "category": "Starters",
+      "price": 40,
+      "image": "/images/puchka.jpg",
+      "available": true
+    },
+    {
+      "_id": "item_004",
+      "name": "Samosa",
+      "category": "Starters",
+      "price": 15,
+      "image": "/images/samosa.jpg",
+      "available": true
+    },
+    {
+      "_id": "item_005",
+      "name": "Chicken Chowmein",
+      "category": "Rice & Noodles",
+      "price": 80,
+      "available": true
+    },
+    {
+      "_id": "item_006",
+      "name": "Lassi",
+      "category": "Beverages",
+      "price": 80,
+      "available": true
+    },
+    {
+      "_id": "item_007",
+      "name": "Chai",
+      "category": "Beverages",
+      "price": 30,
+      "available": true
+    },
+    {
+      "_id": "item_1765622233689",
+      "name": "Biriyani",
+      "category": "Main Course",
+      "price": 200,
+      "available": true
+    },
+    {
+      "_id": "item_1765655654047",
+      "name": "Ice Cream",
+      "category": "Desserts",
+      "price": 50,
+      "available": true
+    },
+    {
+      "_id": "item_1765655722387",
+      "name": "Chicken Sandwich",
+      "category": "Breads",
+      "price": 100,
+      "available": true
+    },
+    {
+      "_id": "item_1765655827999",
+      "name": "Chicken Kebab",
+      "category": "Starters",
+      "price": 200,
+      "available": true
+    }
+  ]
+}

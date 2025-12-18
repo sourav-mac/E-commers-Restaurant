@@ -1,0 +1,12 @@
+{
+  "delivery_fee": 50,
+  "min_order_value": 100,
+  "tax_rate": 0,
+  "opening_time": "10:00",
+  "closing_time": "23:00",
+  "holidays": [],
+  "payment_methods": {
+    "cod": true,
+    "razorpay": true
+  }
+}

@@ -1,0 +1,644 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --petuk-dark: #1a1a1a;
+  --petuk-charcoal: #222222;
+  --petuk-orange: #FF7A00;
+  --petuk-orange-light: #FFA033;
+  --petuk-offwhite: #F2F2F2;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--petuk-dark);
+  color: var(--petuk-offwhite);
+  font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans Bengali", sans-serif;
+  background-image: repeating-linear-gradient(45deg, #1a1a1a 0px, #1a1a1a 2px, #222222 2px, #222222 4px);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Mobile-first responsive container */
+.container {
+  margin: 0 auto;
+  padding: 0 1rem;
+  width: 100%;
+  max-width: 100%;
+}
+
+@media (min-width: 480px) {
+  .container {
+    max-width: 480px;
+  }
+}
+
+@media (min-width: 640px) {
+  .container {
+    max-width: 640px;
+    padding: 0 1.5rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 768px;
+    padding: 0 1.5rem;
+  }
+}
+
+/* Truck Loader Animation */
+.loader {
+  width: fit-content;
+  height: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.truckWrapper {
+  width: 200px;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  align-items: center;
+  justify-content: flex-end;
+  overflow-x: hidden;
+}
+
+.truckBody {
+  width: 130px;
+  height: fit-content;
+  margin-bottom: 6px;
+  animation: motion 1s linear infinite;
+}
+
+@keyframes motion {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(3px); }
+  100% { transform: translateY(0px); }
+}
+
+.truckTires {
+  width: 130px;
+  height: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0px 10px 0px 15px;
+  position: absolute;
+  bottom: 0;
+}
+
+.truckTires svg {
+  width: 24px;
+}
+
+.road {
+  width: 100%;
+  height: 1.5px;
+  background-color: #282828;
+  position: relative;
+  bottom: 0;
+  align-self: flex-end;
+  border-radius: 3px;
+}
+
+.road::before {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 100%;
+  background-color: #282828;
+  right: -50%;
+  border-radius: 3px;
+  animation: roadAnimation 1.4s linear infinite;
+  border-left: 10px solid white;
+}
+
+.road::after {
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 100%;
+  background-color: #282828;
+  right: -65%;
+  border-radius: 3px;
+  animation: roadAnimation 1.4s linear infinite;
+  border-left: 4px solid white;
+}
+
+.lampPost {
+  position: absolute;
+  bottom: 0;
+  right: -90%;
+  height: 90px;
+  animation: roadAnimation 1.4s linear infinite;
+}
+
+@keyframes roadAnimation {
+  0% { transform: translateX(0px); }
+  100% { transform: translateX(-350px); }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    max-width: 1024px;
+    padding: 0 2rem;
+  }
+}
+
+@media (min-width: 1366px) {
+  .container {
+    max-width: 1366px;
+    padding: 0 2rem;
+  }
+}
+
+@media (min-width: 1920px) {
+  .container {
+    max-width: 1440px;
+    padding: 0 4rem;
+  }
+}
+
+.card {
+  background-color: var(--petuk-charcoal);
+  border-radius: 0.5rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+  padding: 1rem;
+  border: 1px solid rgba(255, 122, 0, 0.1);
+}
+
+@media (min-width: 768px) {
+  .card {
+    padding: 1.5rem;
+  }
+}
+
+.btn-orange {
+  padding: 0.75rem 1.5rem;
+  background-color: var(--petuk-orange);
+  color: white;
+  border-radius: 0.25rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  display: inline-block;
+  border: none;
+  font-size: 1rem;
+  min-height: 44px;
+  min-width: 44px;
+  touch-action: manipulation;
+}
+
+.btn-orange:hover {
+  background-color: var(--petuk-orange-light);
+  box-shadow: 0 0 20px rgba(255, 122, 0, 0.3);
+}
+
+.btn-orange:active {
+  transform: scale(0.95);
+}
+
+@media (hover: none) {
+  .btn-orange:active {
+    background-color: var(--petuk-orange-light);
+  }
+}
+
+.divider-orange {
+  height: 0.25rem;
+  background: linear-gradient(to right, transparent, var(--petuk-orange), transparent);
+  margin: 1rem 0;
+}
+
+.dot-divider {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin: 1rem 0;
+}
+
+.dot-divider span {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background-color: var(--petuk-orange);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--petuk-orange);
+  font-weight: bold;
+}
+
+/* Responsive typography */
+h1 {
+  font-size: clamp(1.5rem, 5vw, 3rem);
+  line-height: 1.2;
+}
+
+h2 {
+  font-size: clamp(1.25rem, 4vw, 2.25rem);
+  line-height: 1.3;
+}
+
+h3 {
+  font-size: clamp(1.1rem, 3vw, 1.875rem);
+  line-height: 1.3;
+}
+
+p {
+  font-size: clamp(0.875rem, 2vw, 1.125rem);
+  line-height: 1.6;
+}
+
+a {
+  color: var(--petuk-orange);
+  transition: color 0.2s ease;
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--petuk-orange-light);
+}
+
+input, textarea, select {
+  background-color: var(--petuk-charcoal);
+  color: var(--petuk-offwhite);
+  border: 1px solid rgba(255, 122, 0, 0.3);
+  border-radius: 0.25rem;
+  padding: 0.75rem;
+  transition: all 0.3s ease;
+  font-family: inherit;
+  font-size: 1rem;
+  min-height: 44px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+input::placeholder, textarea::placeholder {
+  color: rgba(242, 242, 242, 0.5);
+}
+
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: var(--petuk-orange);
+  box-shadow: 0 0 0 3px rgba(255, 122, 0, 0.1);
+}
+
+/* Enhanced select dropdown styling */
+select {
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23FF7A00' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 1.25rem;
+  padding-right: 2.5rem;
+}
+
+select option {
+  background-color: var(--petuk-charcoal);
+  color: var(--petuk-offwhite);
+  padding: 0.5rem 1rem;
+  border: none;
+}
+
+select option:hover {
+  background-color: rgba(255, 122, 0, 0.2);
+  color: var(--petuk-offwhite);
+}
+
+select option:checked {
+  background-color: var(--petuk-orange);
+  color: white;
+}
+
+button {
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+  font-size: 1rem;
+  min-height: 44px;
+  touch-action: manipulation;
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+/* Touch-friendly utility classes */
+.touch-highlight {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Responsive image defaults */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* No horizontal scroll */
+* {
+  max-width: 100%;
+}
+
+/* Responsive grid utilities */
+@media (max-width: 480px) {
+  .grid-auto-fit {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .grid-auto-fit {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+}
+
+@media (min-width: 769px) {
+  .grid-auto-fit {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+  }
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Neon Checkbox Styling */
+.checkbox-wrapper {
+  --checkbox-size: 25px;
+  --checkbox-color: #FF7A00;
+  --checkbox-shadow: rgba(255, 122, 0, 0.3);
+  --checkbox-border: rgba(255, 122, 0, 0.7);
+  display: flex;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.checkbox-wrapper input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.checkbox-wrapper .checkmark {
+  position: relative;
+  width: var(--checkbox-size);
+  height: var(--checkbox-size);
+  border: 2px solid var(--checkbox-border);
+  border-radius: 8px;
+  transition: all 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 15px var(--checkbox-shadow);
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.checkbox-wrapper .checkmark::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, var(--checkbox-color), #FFA033);
+  opacity: 0;
+  transition: all 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
+  transform: scale(0) rotate(-45deg);
+}
+
+.checkbox-wrapper input:checked ~ .checkmark::before {
+  opacity: 1;
+  transform: scale(1) rotate(0);
+}
+
+.checkbox-wrapper .checkmark svg {
+  width: 0;
+  height: 0;
+  color: #1a1a1a;
+  z-index: 1;
+  transition: all 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
+  filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.5));
+}
+
+.checkbox-wrapper input:checked ~ .checkmark svg {
+  width: 18px;
+  height: 18px;
+}
+
+.checkbox-wrapper:hover .checkmark {
+  border-color: var(--checkbox-color);
+  transform: scale(1.1);
+  box-shadow:
+    0 0 20px var(--checkbox-shadow),
+    0 0 40px var(--checkbox-shadow),
+    inset 0 0 10px var(--checkbox-shadow);
+  transition: all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+.checkbox-wrapper input:checked ~ .checkmark {
+  animation: pulse 1s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 15px var(--checkbox-shadow);
+  }
+  50% {
+    transform: scale(0.95);
+    box-shadow:
+      0 0 25px var(--checkbox-shadow),
+      0 0 40px var(--checkbox-shadow);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 15px var(--checkbox-shadow);
+  }
+}
+
+.checkbox-wrapper .label {
+  margin-left: 15px;
+  font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  color: #ffffff;
+  font-size: 1rem;
+  text-shadow: 0 0 10px var(--checkbox-shadow);
+  opacity: 0.9;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.checkbox-wrapper:hover .label {
+  opacity: 1;
+  transform: translateX(5px);
+}
+
+/* Uiverse Button Design - Petuk Themed */
+.btn-uiverse {
+  padding: 15px 25px;
+  border: unset;
+  border-radius: 15px;
+  color: white;
+  z-index: 1;
+  background: var(--petuk-orange);
+  position: relative;
+  font-weight: 1000;
+  font-size: 17px;
+  box-shadow: 4px 8px 19px -3px rgba(255, 122, 0, 0.3);
+  transition: all 250ms;
+  overflow: hidden;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.btn-uiverse::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0;
+  border-radius: 15px;
+  background-color: var(--petuk-orange-light);
+  z-index: -1;
+  box-shadow: 4px 8px 19px -3px rgba(255, 122, 0, 0.5);
+  transition: all 250ms;
+}
+
+.btn-uiverse:hover {
+  color: white;
+  box-shadow: 4px 8px 19px -3px rgba(255, 122, 0, 0.5);
+}
+
+.btn-uiverse:hover::before {
+  width: 100%;
+}
+
+/* Uiverse Button Outline Style - Petuk Themed */
+.btn-uiverse-outline {
+  padding: 15px 25px;
+  border: 2px solid var(--petuk-orange);
+  border-radius: 15px;
+  color: var(--petuk-orange);
+  z-index: 1;
+  background: transparent;
+  position: relative;
+  font-weight: 1000;
+  font-size: 17px;
+  box-shadow: 4px 8px 19px -3px rgba(255, 122, 0, 0.2);
+  transition: all 250ms;
+  overflow: hidden;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.btn-uiverse-outline::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0;
+  border-radius: 13px;
+  background-color: var(--petuk-orange);
+  z-index: -1;
+  box-shadow: 4px 8px 19px -3px rgba(255, 122, 0, 0.3);
+  transition: all 250ms;
+}
+
+.btn-uiverse-outline:hover {
+  color: white;
+  border-color: var(--petuk-orange-light);
+  box-shadow: 4px 8px 19px -3px rgba(255, 122, 0, 0.4);
+}
+
+.btn-uiverse-outline:hover::before {
+  width: 100%;
+}
+
+.checkbox-wrapper::after,
+.checkbox-wrapper::before {
+  content: "";
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--checkbox-color);
+  opacity: 0;
+  transition: all 0.5s ease;
+}
+
+.checkbox-wrapper::before {
+  left: -10px;
+  top: 50%;
+}
+
+.checkbox-wrapper::after {
+  right: -10px;
+  top: 50%;
+}
+
+.checkbox-wrapper:hover::before {
+  opacity: 1;
+  transform: translateX(-10px);
+  box-shadow: 0 0 10px var(--checkbox-color);
+}
+
+.checkbox-wrapper:hover::after {
+  opacity: 1;
+  transform: translateX(10px);
+  box-shadow: 0 0 10px var(--checkbox-color);
+}
+/* WhatsApp Button Styles */
+.button-whatsapp {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px 25px;
+  border: unset;
+  border-radius: 15px;
+  color: white;
+  background: var(--petuk-orange);
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background-color 250ms ease;
+}
+
+.button-whatsapp svg {
+  height: 24px;
+  width: 24px;
+}
+
+.button-whatsapp:hover {
+  background: var(--petuk-orange-light);
+}
