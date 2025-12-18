@@ -441,9 +441,9 @@ A: Vercel offers free tier for small projects. Pricing scales with usage.
 
 ## 📞 Support & Contact
 
-- 📧 **Email**: [info@petuk.com](mailto:info@petuk.com)
-- 📱 **Phone**: +880 1974-97019
-- 🌐 **Website**: [petuk.com](https://petuk.com)
+- 📧 **Email**: [mandalsourav026@gmail.com](mailto:mandalsourav026@gmail.com)
+- 📱 **Phone**: +91 9832358231
+- 🌐 **Website**: [Petuk Restaurant](https://petuk.com)
 - 🐛 **Report Issues**: [GitHub Issues](https://github.com/sourav-mac/E-commers-Restaurant/issues)
 
 ---
