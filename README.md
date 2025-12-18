@@ -1,159 +1,472 @@
-# Petuk (পেটুক) — Restaurant Website
+# 🍽️ Petuk (পেটুক) — Restaurant Website
 
-A professional, mobile-first Next.js website for **Petuk**, a local restaurant in Rudranagar, Tetultala. Built with **React**, **Next.js 13**, and **Tailwind CSS**.
+> A modern, professional restaurant web platform for **Petuk**, a fine dining establishment in Rudranagar, Tetultala. Engineered with cutting-edge web technologies for optimal user experience across all devices.
 
-## Features
+<div align="center">
 
-✅ **Homepage** — Hero with rating, services, popular dishes, and reviews  
-✅ **Menu** — Editable categories with prices and descriptions  
-✅ **About** — Story and why choose Petuk  
-✅ **Order** — Online order form (Formspree integration)  
-✅ **Reservations** — Table reservation form with API route  
-✅ **Reviews** — Display and submit customer reviews  
-✅ **Gallery** — Photo/video gallery + embedded Google Map  
-✅ **Contact** — Location, hours, contact form, live open/closed status  
-✅ **Responsive** — Mobile-first design, Tailwind CSS  
-✅ **SEO-ready** — Meta tags, schema.org support (ready to add)  
+![Next.js](https://img.shields.io/badge/Next.js-13-000?style=flat&logo=next.js)
+![React](https://img.shields.io/badge/React-18-61DAFB?style=flat&logo=react)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-3-38B2AC?style=flat&logo=tailwind-css)
+![Node.js](https://img.shields.io/badge/Node.js-16+-339933?style=flat&logo=node.js)
+![License](https://img.shields.io/badge/License-MIT-green?style=flat)
 
-## Tech Stack
+[View Demo](#) • [Documentation](#setup--installation) • [Support](#support)
 
-- **Frontend**: Next.js 13, React 18, Tailwind CSS
-- **Data**: JSON files in `data/` (can be replaced with Sanity, Strapi, or Netlify CMS)
-- **Forms**: Formspree (free form backend)
-- **Maps**: Google Maps embed
-- **Hosting**: Ready for Vercel, Netlify, or DigitalOcean
+</div>
 
-## Setup & Installation
+---
+
+## ✨ Key Features
+
+| Feature | Description |
+|---------|-------------|
+| 🏠 **Homepage** | Engaging hero section with restaurant rating, services highlights, and featured dishes |
+| 📋 **Dynamic Menu** | Fully editable menu system with categories, prices, descriptions, and images |
+| 📖 **About Us** | Restaurant story, values, and reasons to choose Petuk |
+| 🛒 **Online Orders** | Seamless order form with Formspree integration |
+| 🪑 **Reservations** | Easy table booking with API backend support |
+| ⭐ **Reviews System** | Display customer testimonials and submit new reviews |
+| 🖼️ **Gallery** | Photo gallery and embedded Google Map location |
+| 📞 **Contact & Location** | Hours, contact information, and live open/closed status |
+| 📱 **Fully Responsive** | Mobile-first design that works flawlessly on all devices |
+| 🔍 **SEO Optimized** | Meta tags and schema.org support for better search visibility |
+
+---
+
+## 🛠️ Technology Stack
+
+<table>
+<tr>
+<td width="50%">
+
+**Frontend**
+- Next.js 13 Framework
+- React 18 Library
+- Tailwind CSS Styling
+
+</td>
+<td width="50%">
+
+**Backend & Data**
+- JSON-based data storage
+- Next.js API Routes
+- Formspree Integration
+
+</td>
+</tr>
+<tr>
+<td width="50%">
+
+**Additional Tools**
+- Google Maps Embed
+- Responsive Design System
+- Modern build tooling
+
+</td>
+<td width="50%">
+
+**Deployment Ready**
+- Vercel (Recommended)
+- Netlify Support
+- DigitalOcean Compatible
+
+</td>
+</tr>
+</table>
+
+---
+
+## 🚀 Quick Start Guide
 
 ### Prerequisites
-- Node.js 16+
-- npm or yarn
 
-### Steps
+Before you begin, ensure you have the following installed:
+- **Node.js** v16 or higher ([Download](https://nodejs.org))
+- **npm** or **yarn** package manager
+- **Git** for version control
 
-1. **Navigate to the project folder**
+### Installation Steps
+
+1. **Clone the Repository**
    ```bash
-   cd "c:\Users\Lenovo\OneDrive\Desktop\New folder"
+   git clone https://github.com/sourav-mac/E-commers-Restaurant.git
+   cd petuk
    ```
 
-2. **Install dependencies**
+2. **Install Dependencies**
    ```bash
    npm install
    ```
+   Or if using yarn:
+   ```bash
+   yarn install
+   ```
 
-3. **Run locally**
+3. **Run Development Server**
    ```bash
    npm run dev
    ```
-   Visit `http://localhost:3000` in your browser.
+   Open [http://localhost:3000](http://localhost:3000) in your browser to see the website.
 
-4. **Build for production**
+4. **Build for Production**
    ```bash
    npm run build
    npm start
    ```
 
-## Project Structure
+---
+
+## 📁 Project Structure
 
 ```
-petuk-website/
-├── pages/
-│   ├── _app.js           # App wrapper
-│   ├── index.js          # Homepage
-│   ├── menu.js           # Menu page
-│   ├── about.js          # About page
-│   ├── order.js          # Order page
-│   ├── reserve.js        # Reservation page
-│   ├── reviews.js        # Reviews page
-│   ├── gallery.js        # Gallery & map
-│   ├── contact.js        # Contact & location
-│   └── api/
-│       └── reserve.js    # Reservation API endpoint
-├── components/
-│   ├── Header.js         # Navigation header
-│   ├── Footer.js         # Footer
-│   ├── Hero.js           # Hero banner
-│   ├── DishCard.js       # Menu item card
-│   ├── ReviewList.js     # Review display
-│   ├── OpenStatus.js     # Live open/closed badge
-│   └── MapEmbed.js       # Google Map embed
-├── data/
-│   ├── site.json         # Site metadata
-│   ├── menu.json         # Menu items & categories
-│   ├── reviews.json      # Customer reviews
-│   └── gallery.json      # Gallery images
-├── styles/
-│   └── globals.css       # Global Tailwind styles
-├── public/
-│   └── images/           # Hero, dish, gallery images (placeholders)
-├── tailwind.config.js
-├── postcss.config.js
-├── next.config.js
-└── package.json
+📦 petuk/
+├── 📂 pages/                      # Next.js pages & routes
+│   ├── _app.js                    # App wrapper & global settings
+│   ├── index.js                   # 🏠 Homepage
+│   ├── menu.js                    # 📋 Menu page
+│   ├── about.js                   # 📖 About page
+│   ├── order.js                   # 🛒 Order page
+│   ├── cart.js                    # 🛍️ Shopping cart
+│   ├── checkout.js                # 💳 Checkout page
+│   ├── reserve.js                 # 🪑 Reservation page
+│   ├── reviews.js                 # ⭐ Reviews page
+│   ├── gallery.js                 # 🖼️ Gallery & map
+│   ├── contact.js                 # 📞 Contact page
+│   ├── track-order.js             # 📍 Order tracking
+│   ├── my-orders.js               # 📦 My orders
+│   ├── admin/                     # 🔐 Admin dashboard
+│   └── api/                       # 🔌 API endpoints
+│
+├── 📂 components/                 # Reusable React components
+│   ├── Header.js                  # Navigation header
+│   ├── Footer.js                  # Footer
+│   ├── Hero.js                    # Hero banner
+│   ├── DishCard.js                # Menu item card
+│   ├── ReviewList.js              # Review display
+│   ├── StarRating.js              # Rating component
+│   ├── HeartRating.js             # Favorite toggle
+│   ├── OpenStatus.js              # Live status badge
+│   ├── MapEmbed.js                # Google Map embed
+│   ├── MiniCart.js                # Cart widget
+│   └── GlobalNotificationToast.js # Notifications
+│
+├── 📂 context/                    # React Context API
+│   ├── CartContext.js             # Shopping cart state
+│   └── NotificationContext.js     # Notification state
+│
+├── 📂 data/                       # JSON data files
+│   ├── site.json                  # Site configuration
+│   ├── menu.json                  # Menu items
+│   ├── reviews.json               # Customer reviews
+│   ├── orders.json                # Order history
+│   ├── gallery.json               # Gallery images
+│   └── settings.json              # App settings
+│
+├── 📂 lib/                        # Utility functions
+│   ├── dataStore.js               # Data management
+│   ├── sms.js                     # SMS integration
+│   └── sse.js                     # Server-sent events
+│
+├── 📂 styles/                     # Global styles
+│   └── globals.css                # Tailwind CSS
+│
+├── 📂 public/                     # Static assets
+│   ├── images/                    # Image files
+│   └── notification.wav           # Notification sound
+│
+├── 📄 package.json                # Dependencies
+├── 🎨 tailwind.config.js          # Tailwind configuration
+├── 🔧 postcss.config.js           # PostCSS configuration
+├── ⚙️ next.config.js              # Next.js configuration
+└── 📄 README.md                   # This file
 ```
 
-## Key Pages & Routes
+---
 
-| Page | URL | Purpose |
-|------|-----|---------|
-| Home | `/` | Hero, dishes, reviews, CTAs |
-| Menu | `/menu` | Full editable menu |
-| About | `/about` | Restaurant story |
-| Order | `/order` | Online order form |
-| Reserve | `/reserve` | Table reservation |
-| Reviews | `/reviews` | All reviews + submit |
-| Gallery | `/gallery` | Photos + map |
-| Contact | `/contact` | Location, hours, message |
+## 📖 Route Reference
 
-## Customization
+| Route | Component | Description |
+|-------|-----------|-------------|
+| `/` | index.js | 🏠 Homepage with hero, dishes & reviews |
+| `/menu` | menu.js | 📋 Complete menu with all items |
+| `/about` | about.js | 📖 Restaurant story and values |
+| `/order` | order.js | 🛒 Place online orders |
+| `/cart` | cart.js | 🛍️ Shopping cart |
+| `/checkout` | checkout.js | 💳 Payment & delivery |
+| `/reserve` | reserve.js | 🪑 Reserve a table |
+| `/reviews` | reviews.js | ⭐ Customer testimonials |
+| `/gallery` | gallery.js | 🖼️ Photos & location map |
+| `/contact` | contact.js | 📞 Contact information |
+| `/track-order` | track-order.js | 📍 Track orders |
+| `/my-orders` | my-orders.js | 📦 Order history |
+| `/admin/*` | admin/ | 🔐 Admin dashboard |
 
-### Update Restaurant Info
-Edit `data/site.json`:
+---
+
+## ⚙️ Configuration
+
+### 1. Update Restaurant Information
+
+Edit **`data/site.json`**:
 ```json
 {
   "name": "Petuk",
-  "rating": "4.3",
-  "phone": "096474 97019",
-  "opensAt": "11:00"
+  "shortName": "পেটুক",
+  "tagline": "Fine Dining Bengali Restaurant",
+  "description": "Experience authentic Bengali cuisine...",
+  "rating": "4.8",
+  "totalReviews": 156,
+  "phone": "+880 1974-97019",
+  "email": "info@petuk.com",
+  "address": "Rudranagar, Tetultala",
+  "opensAt": "11:00",
+  "closesAt": "23:00",
+  "closedOn": "Monday"
 }
 ```
 
-### Add Menu Items
-Edit `data/menu.json` — add categories and items with prices and descriptions.
+### 2. Manage Menu Items
 
-### Update Reviews
-Edit `data/reviews.json` — add customer reviews with ratings and owner replies.
+Edit **`data/menu.json`** to add/edit categories and dishes:
+```json
+{
+  "categories": [
+    {
+      "id": "appetizers",
+      "name": "Appetizers",
+      "items": [
+        {
+          "id": "chicken-lollipop",
+          "name": "Chicken Lollipop",
+          "description": "Marinated chicken...",
+          "price": 250,
+          "image": "/images/chicken-lollipop.jpg",
+          "available": true
+        }
+      ]
+    }
+  ]
+}
+```
 
-### Update Gallery
-Edit `data/gallery.json` — add image URLs.
+### 3. Add Customer Reviews
 
-### Change Colors
-Edit `tailwind.config.js` — customize petuk colors (maroon, terracotta, cream, mustard).
+Edit **`data/reviews.json`**:
+```json
+{
+  "reviews": [
+    {
+      "id": 1,
+      "name": "John Doe",
+      "rating": 5,
+      "text": "Amazing food and great service!",
+      "image": "https://i.pravatar.cc/100?u=john",
+      "reply": "Thank you for visiting!"
+    }
+  ]
+}
+```
 
-## Forms & Integrations
+### 4. Update Gallery
 
-### Order Form
-Uses Formspree (free service). To customize:
-- Edit the form ID in `pages/order.js`
-- Go to formspree.io to create your account
+Edit **`data/gallery.json`**:
+```json
+{
+  "gallery": [
+    {
+      "id": 1,
+      "url": "/images/dish-1.jpg",
+      "alt": "Chicken Lollipop",
+      "type": "image"
+    }
+  ]
+}
+```
 
-### Reservation Form
-Submits to `/api/reserve` endpoint. Can integrate SMS/email confirmations with Twilio or SendGrid.
+### 5. Customize Colors & Branding
 
-## Deployment
+Edit **`tailwind.config.js`**:
+```javascript
+theme: {
+  colors: {
+    // Your custom colors
+    primary: '#8B0000',    // Maroon
+    accent: '#CC5500',     // Terracotta
+    light: '#F5F1E8',      // Cream
+  }
+}
+```
 
-### Option 1: Vercel (Recommended)
+---
+
+## 🔌 API Integration
+
+### Form Submissions
+
+**Order Form**: Uses [Formspree](https://formspree.io)
+- Create account at formspree.io
+- Update form ID in `pages/order.js`
+
+**Reservation API**: 
+```javascript
+// Endpoint: POST /api/reserve
+// Data: { name, phone, date, time, guests }
+// Returns: { success, message, bookingId }
+```
+
+### SMS Notifications (Optional)
+
+Enable SMS confirmations via **Twilio**:
+1. Sign up at [twilio.com](https://www.twilio.com)
+2. Add credentials to environment variables
+3. Uncomment SMS code in API routes
+
+---
+
+## 🚀 Deployment
+
+### Deploy to Vercel (Recommended)
+
+Vercel offers the fastest deployment for Next.js applications:
+
 ```bash
+# Install Vercel CLI
 npm install -g vercel
+
+# Deploy
 vercel
 ```
 
-### Option 2: Netlify
+**Benefits:**
+- ✅ Automatic deployments from Git
+- ✅ Built-in analytics
+- ✅ Free SSL certificate
+- ✅ Edge functions support
+
+### Deploy to Netlify
+
 ```bash
+# Build the project
 npm run build
-# Deploy the dist folder to Netlify
+
+# Deploy using Netlify CLI
+netlify deploy --prod --dir=.next
 ```
 
-## Support
+### Deploy to DigitalOcean
 
-For customization help, see `ADMIN.md` for non-technical edits.
+1. Create Ubuntu App Platform
+2. Connect GitHub repository
+3. Set build command: `npm run build`
+4. Set start command: `npm start`
+
+---
+
+## 📝 Environment Variables
+
+Create a **`.env.local`** file in the root directory:
+
+```env
+# Formspree
+NEXT_PUBLIC_FORMSPREE_ID=your_form_id_here
+
+# Google Maps (Optional)
+NEXT_PUBLIC_GOOGLE_MAPS_API_KEY=your_api_key_here
+
+# Twilio (Optional - for SMS)
+TWILIO_ACCOUNT_SID=your_sid
+TWILIO_AUTH_TOKEN=your_token
+TWILIO_PHONE_NUMBER=+1234567890
+
+# SendGrid (Optional - for Email)
+SENDGRID_API_KEY=your_api_key
+```
+
+---
+
+## 🔒 Admin Panel
+
+Access the admin dashboard at `/admin/login` to manage:
+- 📋 Menu items and categories
+- 📦 Orders and tracking
+- ⭐ Customer reviews
+- 💳 Payments
+- 📊 Analytics
+- ⚙️ Site settings
+
+For detailed admin instructions, see [ADMIN.md](./ADMIN.md)
+
+---
+
+## 🤝 Contributing
+
+We welcome contributions! To contribute:
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit changes (`git commit -m 'Add amazing feature'`)
+4. Push to branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+---
+
+## 📚 Additional Documentation
+
+- 📖 [Admin Guide](./ADMIN.md) — Non-technical customization
+- 🎨 [Design System](./RESPONSIVE_DESIGN_GUIDE.md) — Styling & themes
+- 🧪 [Testing Guide](./TESTING_GUIDE.md) — Quality assurance
+- 🛒 [Shopping Cart](./SHOPPING_CART_README.md) — Cart functionality
+- 📅 [Reservations](./README_RESERVATIONS.md) — Booking system
+
+---
+
+## ❓ FAQ
+
+**Q: Can I use this for my restaurant?**
+A: Yes! The system is designed to be easily customizable for any restaurant.
+
+**Q: Is this open source?**
+A: Yes, this project is open source and licensed under MIT.
+
+**Q: How do I add payment processing?**
+A: You can integrate Stripe or Razorpay in the checkout page.
+
+**Q: Can I use a database instead of JSON?**
+A: Yes, you can replace JSON files with MongoDB, Firebase, or any CMS.
+
+**Q: What are the hosting costs?**
+A: Vercel offers free tier for small projects. Pricing scales with usage.
+
+---
+
+## 📞 Support & Contact
+
+- 📧 **Email**: [info@petuk.com](mailto:info@petuk.com)
+- 📱 **Phone**: +880 1974-97019
+- 🌐 **Website**: [petuk.com](https://petuk.com)
+- 🐛 **Report Issues**: [GitHub Issues](https://github.com/sourav-mac/E-commers-Restaurant/issues)
+
+---
+
+## 📄 License
+
+This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
+
+---
+
+## 🙏 Acknowledgments
+
+- Next.js and React communities
+- Tailwind CSS for amazing styling
+- Formspree for form handling
+- Google Maps for location services
+
+---
+
+<div align="center">
+
+### Made with ❤️ by [Sourav](https://github.com/sourav-mac)
+
+⭐ If you found this helpful, please consider giving it a star!
+
+</div>
