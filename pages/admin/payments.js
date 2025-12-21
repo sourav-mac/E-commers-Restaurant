@@ -11,14 +11,14 @@ export default function AdminPayments() {
   const [filterStatus, setFilterStatus] = useState('all')
 
   useEffect(() => {
-    const token = localStorage.getItem('adminToken')
+    const token = localStorage.getItem('admin_token')
     if (!token) router.push('/admin/login')
     else fetchPayments()
   }, [])
 
   const fetchPayments = async () => {
     try {
-      const token = localStorage.getItem('adminToken')
+      const token = localStorage.getItem('admin_token')
       const res = await fetch('/api/admin/payments', {
         headers: { 'Authorization': `Bearer ${token}` }
       })

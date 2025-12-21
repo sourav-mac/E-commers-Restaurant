@@ -3,9 +3,11 @@ import Footer from '../components/Footer'
 import HeartRating from '../components/HeartRating'
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
+import { useLoading } from '../context/LoadingContext'
 
 export default function Reviews(){
   const router = useRouter()
+  const { showLoading, hideLoading } = useLoading()
   const [reviews, setReviews] = useState([])
   const [loading, setLoading] = useState(true)
   const [formLoading, setFormLoading] = useState(false)

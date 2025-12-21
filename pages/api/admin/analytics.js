@@ -1,16 +1,6 @@
 // pages/api/admin/analytics.js
-import jwt from 'jsonwebtoken'
+import { adminApiRoute } from '../../../lib/adminProtection'
 import { readData } from '../../../lib/dataStore'
-
-const JWT_SECRET = 'petuk-admin-secret-key-2024'
-
-function verifyToken(token) {
-  try {
-    return jwt.verify(token, JWT_SECRET)
-  } catch (err) {
-    return null
-  }
-}
 
 function calculateAnalytics(orders, timeframe) {
   const now = new Date()
@@ -95,18 +85,13 @@ function calculateAnalytics(orders, timeframe) {
   }
 }
 
-export default function handler(req, res) {
+export default adminApiRoute(async function handler(req, res) {
   if (req.method !== 'GET') {
     return res.status(405).json({ error: 'Method not allowed' })
   }
 
-  // Verify JWT token
-  const authHeader = req.headers.authorization
-  const token = authHeader?.replace('Bearer ', '')
-
-  if (!token || !verifyToken(token)) {
-    return res.status(401).json({ error: 'Unauthorized' })
-  }
+  // Token already verified by adminApiRoute middleware
+  // req.admin contains authenticated user data
 
   const { timeframe = 'today' } = req.query
 
@@ -128,4 +113,4 @@ export default function handler(req, res) {
     success: true,
     analytics
   })
-}
+})

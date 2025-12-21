@@ -1,25 +1,10 @@
-import jwt from 'jsonwebtoken'
+import { adminApiRoute } from '../../../../lib/adminProtection'
 import { readData, writeData } from '../../../../lib/dataStore'
 import { sendSMS } from '../../../../lib/sms'
 
-const JWT_SECRET = 'petuk-admin-secret-key-2024'
-
-function verifyToken(token) {
-  try {
-    return jwt.verify(token, JWT_SECRET)
-  } catch (err) {
-    return null
-  }
-}
-
-export default async function handler(req, res) {
-  // Verify JWT token
-  const authHeader = req.headers.authorization
-  const token = authHeader?.replace('Bearer ', '')
-
-  if (!token || !verifyToken(token)) {
-    return res.status(401).json({ error: 'Unauthorized' })
-  }
+export default adminApiRoute(async function handler(req, res) {
+  // Token already verified by adminApiRoute middleware
+  // req.admin contains authenticated user data
 
   const { id } = req.query
   const { status } = req.body
@@ -64,7 +49,7 @@ export default async function handler(req, res) {
       
       writeData('orders', allData)
 
-      // Send SMS to customer
+      // Send SMS asynchronously (don't await - improves response time)
       const phone = reservation.phone || reservation.originalPhone
       const adminPhone = process.env.ADMIN_PHONE || 'the restaurant'
       const statusMessages = {
@@ -74,8 +59,11 @@ export default async function handler(req, res) {
 
       const message = statusMessages[status]
       if (phone) {
-        await sendSMS(phone, message)
-        console.log(`✅ Reservation ${id} ${status}, SMS sent to ${phone}`)
+        // Fire-and-forget SMS - don't await
+        sendSMS(phone, message).catch(err => {
+          console.error(`❌ Failed to send SMS for reservation ${id}:`, err)
+        })
+        console.log(`✅ Reservation ${id} ${status}, SMS queued for ${phone}`)
       }
 
       res.status(200).json({
@@ -91,4 +79,4 @@ export default async function handler(req, res) {
   } else {
     res.status(405).json({ error: 'Method not allowed' })
   }
-}
+})

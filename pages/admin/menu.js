@@ -3,9 +3,11 @@
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
+import { useLoading } from '../../context/LoadingContext'
 
 export default function AdminMenu() {
   const router = useRouter()
+  const { showLoading, hideLoading } = useLoading()
   const [menuItems, setMenuItems] = useState([])
   const [loading, setLoading] = useState(true)
   const [showAddForm, setShowAddForm] = useState(false)
@@ -16,14 +18,14 @@ export default function AdminMenu() {
   const categories = ['Starters', 'Main Course', 'Rice & Noodles', 'Breads', 'Beverages', 'Desserts']
 
   useEffect(() => {
-    const token = localStorage.getItem('adminToken')
+    const token = localStorage.getItem('admin_token')
     if (!token) router.push('/admin/login')
     else fetchMenuItems()
   }, [])
 
   const fetchMenuItems = async () => {
     try {
-      const token = localStorage.getItem('adminToken')
+      const token = localStorage.getItem('admin_token')
       const res = await fetch('/api/admin/menu', {
         headers: { 'Authorization': `Bearer ${token}` }
       })

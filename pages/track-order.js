@@ -3,13 +3,18 @@
 import { useState } from 'react'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
+import CancelOrderModal from '../components/CancelOrderModal'
+import { useLoading } from '../context/LoadingContext'
 
 export default function TrackOrder() {
+  const { showLoading, hideLoading } = useLoading()
   const [orderID, setOrderID] = useState('')
   const [phone, setPhone] = useState('')
   const [order, setOrder] = useState(null)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
+  const [cancelModalOpen, setCancelModalOpen] = useState(false)
+  const [cancelLoading, setCancelLoading] = useState(false)
 
   const handleTrack = async (e) => {
     e.preventDefault()
@@ -41,6 +46,62 @@ export default function TrackOrder() {
     } finally {
       setLoading(false)
     }
+  }
+
+  const handleOpenCancelModal = () => {
+    if (order) {
+      setCancelModalOpen(true)
+    }
+  }
+
+  const handleCloseCancelModal = () => {
+    setCancelModalOpen(false)
+  }
+
+  const handleConfirmCancel = async (reason) => {
+    if (!order) return
+
+    setCancelLoading(true)
+    showLoading('Cancelling order...')
+
+    try {
+      const res = await fetch(`/api/orders/${order.order_id}/cancel`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          phone: phone,
+          reason: reason
+        })
+      })
+
+      const data = await res.json()
+
+      if (res.ok) {
+        // Update the order
+        setOrder(prev => ({
+          ...prev,
+          status: 'cancelled',
+          cancelledAt: data.order.cancelledAt
+        }))
+
+        handleCloseCancelModal()
+        alert('✅ Order cancelled successfully. Admin has been notified.')
+      } else {
+        alert('❌ ' + (data.error || 'Failed to cancel order'))
+      }
+    } catch (err) {
+      console.error('Cancellation error:', err)
+      alert('❌ Failed to cancel order. Please try again.')
+    } finally {
+      setCancelLoading(false)
+      hideLoading()
+    }
+  }
+
+  const canCancelOrder = () => {
+    if (!order) return false
+    const cancellableStatuses = ['placed', 'confirmed', 'ready']
+    return cancellableStatuses.includes(order.status)
   }
 
   const getStatusColor = (status) => {
@@ -157,6 +218,19 @@ export default function TrackOrder() {
                     </div>
                   )}
                 </div>
+
+                {/* Cancel Button */}
+                {canCancelOrder() && (
+                  <div className="mt-4 pt-4 border-t border-[var(--petuk-orange)]/20">
+                    <button
+                      onClick={handleOpenCancelModal}
+                      className="px-4 py-2 rounded font-semibold transition bg-red-600 text-white hover:bg-red-700 flex items-center gap-2"
+                    >
+                      ✕ Cancel Order
+                    </button>
+                    <p className="text-xs text-gray-500 mt-2">You can cancel this order before it's prepared</p>
+                  </div>
+                )}
               </div>
 
               {/* Status Timeline */}
@@ -278,6 +352,16 @@ export default function TrackOrder() {
           )}
         </div>
       </main>
+
+      {/* Cancel Order Modal */}
+      <CancelOrderModal
+        isOpen={cancelModalOpen}
+        order={order}
+        onConfirm={handleConfirmCancel}
+        onCancel={handleCloseCancelModal}
+        isLoading={cancelLoading}
+      />
+
       <Footer />
     </div>
   )

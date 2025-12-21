@@ -1,16 +1,30 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { useRouter } from 'next/router'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
+import { useLoading } from '../context/LoadingContext'
 
 export default function Reserve(){
+  const router = useRouter()
+  const { showLoading, hideLoading, resetLoading } = useLoading()
   const [loading, setLoading] = useState(false)
   const [success, setSuccess] = useState(false)
   const [error, setError] = useState('')
   const [reservation, setReservation] = useState(null)
 
+  // Reset loader state when reservation page loads or is revisited
+  useEffect(() => {
+    // Only reset when page is ready and pathname is /reserve
+    if (router.isReady && router.pathname === '/reserve') {
+      resetLoading() // Clear any stuck state
+      hideLoading() // Ensure loader is hidden on page load
+    }
+  }, [router.isReady, router.pathname, resetLoading, hideLoading])
+
   const handleSubmit = async (e) => {
     e.preventDefault()
     setLoading(true)
+    showLoading('Booking your reservation...')
     setError('')
 
     const formData = new FormData(e.target)
@@ -37,14 +51,23 @@ export default function Reserve(){
         setReservation(result.reservation)
         e.target.reset()
         setTimeout(() => {
+          hideLoading()
+        }, 500)
+        setTimeout(() => {
           window.location.href = '/'
         }, 3000)
       } else {
         setError(result.message || 'Failed to book reservation')
+        setTimeout(() => {
+          hideLoading()
+        }, 300)
       }
     } catch (err) {
       console.error('Error:', err)
       setError('Error booking reservation. Please try again.')
+      setTimeout(() => {
+        hideLoading()
+      }, 300)
     } finally {
       setLoading(false)
     }

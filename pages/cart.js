@@ -6,9 +6,11 @@ import Link from 'next/link'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import { CartContext } from '../context/CartContext'
+import { useLoading } from '../context/LoadingContext'
 
 export default function CartPage() {
   const { items, subtotal, tax, delivery_fee, discount, total, promoCode, error, updateQuantity, removeItem, applyPromo, removePromo } = useContext(CartContext)
+  const { showLoading, hideLoading } = useLoading()
   const [promoInput, setPromoInput] = useState('')
   const [isApplyingPromo, setIsApplyingPromo] = useState(false)
   const [settings, setSettings] = useState({ min_order_value: 0 })

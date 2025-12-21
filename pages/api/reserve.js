@@ -2,6 +2,7 @@ import { readData, writeData } from '../../lib/dataStore'
 import { sendSMS, formatPhoneNumber } from '../../lib/sms'
 import { v4 as uuidv4 } from 'uuid'
 import { broadcastEvent } from '../../lib/sse'
+import { broadcastNewReservation } from '../../lib/socketServer'
 
 export default async function handler(req, res) {
   if (req.method === 'POST') {
@@ -45,7 +46,14 @@ export default async function handler(req, res) {
       // Write back to file
       writeData('orders', existingData);
 
-      // Send SMS to customer (note: status is pending until admin accepts)
+      // Broadcast via Socket.IO (for real-time admin notification)
+      try {
+        broadcastNewReservation(reservation)
+      } catch (err) {
+        console.error('❌ Socket.IO broadcast failed:', err)
+      }
+
+      // Send SMS asynchronously (don't await - improves response time)
       const customerMessage = `📩 Reservation request received!
 Reservation ID: ${reservation.id}
 Name: ${name}
@@ -54,10 +62,12 @@ Time: ${time}
 Party Size: ${size}
 Status: Pending - we will call to confirm. Thank you!`;
 
+      // Fire-and-forget SMS to customer
+      sendSMS(formattedPhone, customerMessage).catch(err => {
+        console.error('❌ Failed to send customer SMS:', err)
+      });
 
-      await sendSMS(formattedPhone, customerMessage);
-
-      // Send SMS to admin
+      // Fire-and-forget SMS to admin
       const adminMessage = `🔔 NEW RESERVATION REQUEST!
 ID: ${reservation.id}
 Name: ${name}
@@ -69,19 +79,21 @@ Special Requests: ${note || 'None'}`;
 
       const adminPhone = process.env.ADMIN_PHONE;
       if (adminPhone) {
-        await sendSMS(adminPhone, adminMessage);
+        sendSMS(adminPhone, adminMessage).catch(err => {
+          console.error('❌ Failed to send admin SMS:', err)
+        });
       }
 
       console.log('✅ Reservation created:', reservation.id);
 
-      // Broadcast event to SSE listeners so admins get real-time updates
+      // Broadcast event to SSE listeners (fire-and-forget)
       try {
-        console.log('📡 Broadcasting new-reservation event:', reservation.id)
         broadcastEvent('new-reservation', reservation)
       } catch (err) {
         console.error('❌ SSE broadcast failed:', err)
       }
 
+      // Return immediately - SMS and broadcasts happen in background
       res.status(200).json({
         success: true,
         message: 'Your table is booked. We will call to confirm.',

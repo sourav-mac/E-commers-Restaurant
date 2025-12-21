@@ -4,9 +4,11 @@ import { useContext, useState, useEffect, useRef } from 'react'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import { CartContext } from '../context/CartContext'
+import { useLoading } from '../context/LoadingContext'
 
 export default function Menu(){
   const { items: cartItems, addToCart, updateQuantity: cartUpdateQuantity } = useContext(CartContext)
+  const { showLoading, hideLoading } = useLoading()
   const [quantities, setQuantities] = useState({})
   const [menu, setMenu] = useState({ categories: [], items: [] })
   const [loading, setLoading] = useState(true)
@@ -14,6 +16,8 @@ export default function Menu(){
   // Fetch menu from API
   useEffect(() => {
     const fetchMenu = async () => {
+      setLoading(true)
+      showLoading('Loading menu...')
       try {
         const res = await fetch('/api/public/menu')
         const data = await res.json()
@@ -24,6 +28,7 @@ export default function Menu(){
         console.error('Failed to fetch menu:', err)
       } finally {
         setLoading(false)
+        hideLoading()
       }
     }
     fetchMenu()

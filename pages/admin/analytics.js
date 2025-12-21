@@ -11,14 +11,14 @@ export default function AdminAnalytics() {
   const [timeframe, setTimeframe] = useState('today')
 
   useEffect(() => {
-    const token = localStorage.getItem('adminToken')
+    const token = localStorage.getItem('admin_token')
     if (!token) router.push('/admin/login')
     else fetchAnalytics()
   }, [timeframe])
 
   const fetchAnalytics = async () => {
     try {
-      const token = localStorage.getItem('adminToken')
+      const token = localStorage.getItem('admin_token')
       const res = await fetch(`/api/admin/analytics?timeframe=${timeframe}`, {
         headers: { 'Authorization': `Bearer ${token}` }
       })

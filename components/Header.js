@@ -1,9 +1,19 @@
 import Link from 'next/link'
 import { useState } from 'react'
+import { useRouter } from 'next/router'
+import { useLoading } from '../context/LoadingContext'
 import MiniCart from './MiniCart'
 
 export default function Header(){
+  const router = useRouter()
+  const { showLoading } = useLoading()
   const [menuOpen, setMenuOpen] = useState(false)
+
+  const goToReserve = (e) => {
+    e.preventDefault()
+    showLoading('Opening reservation page...')
+    router.push('/reserve')
+  }
 
   return (
     <>
@@ -22,10 +32,10 @@ export default function Header(){
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex gap-6 items-center">
-            <Link href="/menu" className="text-sm font-semibold hover:text-[var(--petuk-orange)] transition">Menu</Link>
-            <Link href="/reserve" className="text-sm font-semibold hover:text-[var(--petuk-orange)] transition">Reserve</Link>
-            <Link href="/my-orders" className="text-sm font-semibold hover:text-[var(--petuk-orange)] transition">My Orders</Link>
-            <Link href="/contact" className="text-sm font-semibold hover:text-[var(--petuk-orange)] transition">Contact</Link>
+            <Link href="/menu" className="text-sm font-semibold text-[var(--petuk-orange)] hover:text-[var(--petuk-offwhite)] transition">Menu</Link>
+            <button onClick={goToReserve} className="text-sm font-semibold text-[var(--petuk-orange)] hover:text-[var(--petuk-offwhite)] transition bg-transparent border-none cursor-pointer">Reserve</button>
+            <Link href="/my-orders" className="text-sm font-semibold text-[var(--petuk-orange)] hover:text-[var(--petuk-offwhite)] transition">My Orders</Link>
+            <Link href="/contact" className="text-sm font-semibold text-[var(--petuk-orange)] hover:text-[var(--petuk-offwhite)] transition">Contact</Link>
             <MiniCart />
           </nav>
 
@@ -53,7 +63,7 @@ export default function Header(){
           <nav className="md:hidden bg-[var(--petuk-charcoal)] border-t border-[var(--petuk-orange)]/20 py-4">
             <div className="container space-y-3">
               <Link href="/menu" onClick={() => setMenuOpen(false)} className="block py-2 text-sm font-semibold text-[var(--petuk-offwhite)] hover:text-[var(--petuk-orange)] transition">📱 Menu</Link>
-              <Link href="/reserve" onClick={() => setMenuOpen(false)} className="block py-2 text-sm font-semibold text-[var(--petuk-offwhite)] hover:text-[var(--petuk-orange)] transition">🍽️ Reserve a Table</Link>
+              <button onClick={(e) => { setMenuOpen(false); goToReserve(e); }} className="block w-full text-left py-2 text-sm font-semibold text-[var(--petuk-offwhite)] hover:text-[var(--petuk-orange)] transition bg-transparent border-none cursor-pointer">🍽️ Reserve a Table</button>
               <Link href="/my-orders" onClick={() => setMenuOpen(false)} className="block py-2 text-sm font-semibold text-[var(--petuk-offwhite)] hover:text-[var(--petuk-orange)] transition">📦 My Orders</Link>
               <Link href="/contact" onClick={() => setMenuOpen(false)} className="block py-2 text-sm font-semibold text-[var(--petuk-offwhite)] hover:text-[var(--petuk-orange)] transition">📞 Contact</Link>
               <hr className="border-[var(--petuk-orange)]/20 my-2" />

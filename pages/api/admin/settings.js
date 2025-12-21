@@ -1,8 +1,6 @@
 // pages/api/admin/settings.js
-import jwt from 'jsonwebtoken'
+import { adminApiRoute } from '../../../lib/adminProtection'
 import { readData, writeData } from '../../../lib/dataStore'
-
-const JWT_SECRET = 'petuk-admin-secret-key-2024'
 
 const defaultSettings = {
   delivery_fee: 50,
@@ -17,22 +15,9 @@ const defaultSettings = {
   }
 }
 
-function verifyToken(token) {
-  try {
-    return jwt.verify(token, JWT_SECRET)
-  } catch (err) {
-    return null
-  }
-}
-
-export default function handler(req, res) {
-  // Verify JWT token
-  const authHeader = req.headers.authorization
-  const token = authHeader?.replace('Bearer ', '')
-
-  if (!token || !verifyToken(token)) {
-    return res.status(401).json({ error: 'Unauthorized' })
-  }
+export default adminApiRoute(async function handler(req, res) {
+  // Token already verified by adminApiRoute middleware
+  // req.admin contains authenticated user data
 
   if (req.method === 'GET') {
     const appSettings = readData('settings') || defaultSettings
@@ -53,4 +38,4 @@ export default function handler(req, res) {
   }
 
   return res.status(405).json({ error: 'Method not allowed' })
-}
+})

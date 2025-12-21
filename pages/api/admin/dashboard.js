@@ -1,29 +1,14 @@
 // pages/api/admin/dashboard.js
-import jwt from 'jsonwebtoken'
+import { adminApiRoute } from '../../../lib/adminProtection'
 import { readData } from '../../../lib/dataStore'
 
-const JWT_SECRET = 'petuk-admin-secret-key-2024'
-
-function verifyToken(token) {
-  try {
-    return jwt.verify(token, JWT_SECRET)
-  } catch (err) {
-    return null
-  }
-}
-
-export default function handler(req, res) {
+export default adminApiRoute(async function handler(req, res) {
   if (req.method !== 'GET') {
     return res.status(405).json({ error: 'Method not allowed' })
   }
 
-  // Verify JWT token
-  const authHeader = req.headers.authorization
-  const token = authHeader?.replace('Bearer ', '')
-
-  if (!token || !verifyToken(token)) {
-    return res.status(401).json({ error: 'Unauthorized' })
-  }
+  // Token already verified by adminApiRoute middleware
+  // req.admin contains authenticated user data
 
   // Read real orders from persistent storage
   const allData = readData('orders') || { orders: [] }
@@ -36,13 +21,16 @@ export default function handler(req, res) {
     orders = allData.orders
   }
 
+  // For consistency with analytics, exclude cancelled orders from total count
+  const activeOrders = orders.filter(o => o.status !== 'cancelled')
+
   // Calculate stats
   const now = new Date()
   
   // Get today's date in UTC (just the date part: YYYY-MM-DD)
   const todayUTC = now.toISOString().split('T')[0]
   
-  const todayOrders = orders.filter(o => {
+  const todayOrders = activeOrders.filter(o => {
     // Extract just the date part from the createdAt timestamp
     const orderDateUTC = o.createdAt.split('T')[0]
     return orderDateUTC === todayUTC
@@ -62,15 +50,15 @@ export default function handler(req, res) {
       return false
     })
     .reduce((sum, o) => sum + (o.total || 0), 0)
-  const totalOrders = orders.length
-  const pendingOrders = orders.filter(o => ['placed', 'confirmed', 'preparing'].includes(o.status)).length
+  const totalOrders = activeOrders.length
+  const pendingOrders = activeOrders.filter(o => ['placed', 'confirmed', 'preparing'].includes(o.status)).length
 
   const statusCounts = {
-    placed: orders.filter(o => o.status === 'placed').length,
-    confirmed: orders.filter(o => o.status === 'confirmed').length,
-    preparing: orders.filter(o => o.status === 'preparing').length,
-    ready: orders.filter(o => o.status === 'ready').length,
-    delivered: orders.filter(o => o.status === 'delivered').length,
+    placed: activeOrders.filter(o => o.status === 'placed').length,
+    confirmed: activeOrders.filter(o => o.status === 'confirmed').length,
+    preparing: activeOrders.filter(o => o.status === 'preparing').length,
+    ready: activeOrders.filter(o => o.status === 'ready').length,
+    delivered: activeOrders.filter(o => o.status === 'delivered').length,
     cancelled: orders.filter(o => o.status === 'cancelled').length
   }
 
@@ -83,9 +71,9 @@ export default function handler(req, res) {
     },
     statusCounts,
     recentOrders: orders.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)),
-    todayOrders: orders.filter(o => {
+    todayOrders: activeOrders.filter(o => {
       const orderDateUTC = o.createdAt.split('T')[0]
       return orderDateUTC === todayUTC
     }).sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
   })
-}
+})

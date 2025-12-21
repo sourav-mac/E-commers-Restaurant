@@ -8,7 +8,7 @@ export default function Contact(){
   const [formData, setFormData] = useState({ name: '', message: '' })
   const [submitted, setSubmitted] = useState(false)
 
-  const ADMIN_WHATSAPP = '919647497019' // Admin WhatsApp number (E.164 format)
+  const ADMIN_WHATSAPP = '919832358231' // Admin WhatsApp number (E.164 format)
 
   useEffect(() => {
     const fetchSettings = async () => {
@@ -66,8 +66,8 @@ ${formData.message}`;
             <div className="text-xs md:text-sm text-gray-400 mt-2">P4M4+M6M, Rudranagar, Tetultala, West Bengal 743373</div>
             <div className="mt-3 md:mt-4">
               <span className="text-xs md:text-sm">Phone: </span>
-              <a href="tel:09647497019" className="text-[var(--petuk-orange)] font-semibold hover:text-[var(--petuk-orange-light)] text-xs md:text-sm">
-                096474 97019
+              <a href="tel:09832358231" className="text-[var(--petuk-orange)] font-semibold hover:text-[var(--petuk-orange-light)] text-xs md:text-sm">
+                098323 58231
               </a>
             </div>
             <div className="mt-4 md:mt-6">

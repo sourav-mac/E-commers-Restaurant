@@ -5,7 +5,7 @@ export default function Footer(){
         <div>
           <div className="font-bold text-[var(--petuk-orange)]">Petuk (পেটুক)</div>
           <div className="text-sm text-gray-400 mt-2">P4M4+M6M, Rudranagar, Tetultala, West Bengal 743373</div>
-          <div className="text-sm text-gray-400 mt-1">Phone: <a href="tel:09647497019" className="text-[var(--petuk-orange)] hover:text-[var(--petuk-orange-light)]">096474 97019</a></div>
+          <div className="text-sm text-gray-400 mt-1">Phone: <a href="tel:09832358231" className="text-[var(--petuk-orange)] hover:text-[var(--petuk-orange-light)]">098323 58231</a></div>
         </div>
         <div className="text-sm text-gray-400">
           © {new Date().getFullYear()} Petuk — All rights reserved

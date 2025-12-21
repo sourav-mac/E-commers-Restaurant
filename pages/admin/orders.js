@@ -3,9 +3,11 @@
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
+import { useNotification } from '../../context/NotificationContext'
 
 export default function AdminOrders() {
   const router = useRouter()
+  const { notification, notificationType } = useNotification()
   const [orders, setOrders] = useState([])
   const [reservations, setReservations] = useState([])
   const [filteredOrders, setFilteredOrders] = useState([])
@@ -16,10 +18,53 @@ export default function AdminOrders() {
   const [activeTab, setActiveTab] = useState('orders')
 
   useEffect(() => {
-    const token = localStorage.getItem('adminToken')
+    const token = localStorage.getItem('admin_token')
     if (!token) router.push('/admin/login')
     else fetchData()
   }, [])
+
+  // ✅ FIXED: Do NOT update orders/reservations on socket notifications
+  // This was causing random loader triggers from background socket events
+  // Instead, the NotificationContext handles listening to socket events
+  // and broadcast them. We only need to fetch data on component mount.
+  // Keep this commented out to prevent unnecessary re-renders
+  /*
+  useEffect(() => {
+    if (!notification) return
+
+    const source = 'socket'; // WebSocket events
+
+    if (notificationType === 'order') {
+      console.log('🎯 [ORDERS PAGE] New order notification received:', notification.order_id, '- Source:', source)
+      
+      setOrders(prev => {
+        const exists = prev.some(o => o.order_id === notification.order_id)
+        
+        if (exists) {
+          console.log('📝 Order already in list, updating:', notification.order_id)
+          return prev.map(o => o.order_id === notification.order_id ? notification : o)
+        }
+        
+        console.log('✨ Adding new order to list:', notification.order_id)
+        return [notification, ...prev]
+      })
+    } else if (notificationType === 'reservation') {
+      console.log('🎯 [ORDERS PAGE] New reservation notification received:', notification.id, '- Source:', source)
+      
+      setReservations(prev => {
+        const exists = prev.some(r => r.id === notification.id)
+        
+        if (exists) {
+          console.log('📝 Reservation already in list, updating:', notification.id)
+          return prev.map(r => r.id === notification.id ? notification : r)
+        }
+        
+        console.log('✨ Adding new reservation to list:', notification.id)
+        return [notification, ...prev]
+      })
+    }
+  }, [notification, notificationType])
+  */
 
   useEffect(() => {
     filterOrders()
@@ -28,7 +73,9 @@ export default function AdminOrders() {
 
   const fetchData = async () => {
     try {
-      const token = localStorage.getItem('adminToken')
+      // ✅ Global loader (via fetch interceptor) handles the loading
+      // Don't call setLoading separately - it breaks the smart loading
+      const token = localStorage.getItem('admin_token')
       const res = await fetch('/api/admin/orders', {
         headers: { 'Authorization': `Bearer ${token}` }
       })
@@ -36,7 +83,9 @@ export default function AdminOrders() {
       if (res.ok) {
         setOrders(data.orders || [])
         setReservations(data.reservations || [])
+        console.log('✅ [ORDERS] Data fetched successfully');
       }
+      // Local loading state is just for page-level UI
       setLoading(false)
     } catch (err) {
       console.error('Failed to fetch data:', err)
@@ -80,7 +129,13 @@ export default function AdminOrders() {
 
   const updateOrderStatus = async (orderId, newStatus) => {
     try {
-      const token = localStorage.getItem('adminToken')
+      const token = localStorage.getItem('admin_token')
+      
+      // Optimistic update - update UI immediately
+      setOrders(prev => 
+        prev.map(o => o.order_id === orderId ? { ...o, status: newStatus } : o)
+      )
+      
       const res = await fetch(`/api/admin/orders/${orderId}`, {
         method: 'PATCH',
         headers: {
@@ -89,17 +144,34 @@ export default function AdminOrders() {
         },
         body: JSON.stringify({ status: newStatus })
       })
+      
       if (res.ok) {
-        fetchData()
+        console.log('✅ Order status updated:', orderId, '→', newStatus)
+        // No need to fetch all data - UI already updated
+      } else {
+        // Revert optimistic update on error
+        await fetchData()
+        const error = await res.json()
+        console.error('❌ Failed to update order:', res.status, error)
+        alert('Failed to update order: ' + (error.error || res.statusText))
       }
     } catch (err) {
-      console.error('Failed to update order:', err)
+      // Revert optimistic update on error
+      await fetchData()
+      console.error('❌ Failed to update order:', err)
+      alert('Failed to update order: ' + err.message)
     }
   }
 
   const updateReservationStatus = async (reservationId, newStatus) => {
     try {
-      const token = localStorage.getItem('adminToken')
+      const token = localStorage.getItem('admin_token')
+      
+      // Optimistic update - update UI immediately
+      setReservations(prev =>
+        prev.map(r => r.id === reservationId ? { ...r, status: newStatus } : r)
+      )
+      
       const res = await fetch(`/api/admin/reservations/${reservationId}`, {
         method: 'PATCH',
         headers: {
@@ -108,11 +180,22 @@ export default function AdminOrders() {
         },
         body: JSON.stringify({ status: newStatus })
       })
+      
       if (res.ok) {
-        fetchData()
+        console.log('✅ Reservation status updated:', reservationId, '→', newStatus)
+        // No need to fetch all data - UI already updated
+      } else {
+        // Revert optimistic update on error
+        await fetchData()
+        const error = await res.json()
+        console.error('❌ Failed to update reservation:', res.status, error)
+        alert('Failed to update reservation: ' + (error.error || res.statusText))
       }
     } catch (err) {
-      console.error('Failed to update reservation:', err)
+      // Revert optimistic update on error
+      await fetchData()
+      console.error('❌ Failed to update reservation:', err)
+      alert('Failed to update reservation: ' + err.message)
     }
   }
 

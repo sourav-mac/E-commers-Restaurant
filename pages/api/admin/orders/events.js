@@ -1,11 +1,10 @@
 // pages/api/admin/orders/events.js
 import { addClient, broadcastEvent } from '../../../../lib/sse'
-import jwt from 'jsonwebtoken'
-
-const JWT_SECRET = 'petuk-admin-secret-key-2024'
+import { verifyAdminToken } from '../../../../lib/adminAuth'
 
 export default function handler(req, res) {
-  console.log('📡 SSE endpoint received request')
+  console.log('📡 SSE endpoint received request, method:', req.method)
+  console.log('📡 SSE endpoint URL:', req.url)
   
   if (req.method !== 'GET') {
     console.log('❌ SSE: method not GET')
@@ -15,6 +14,7 @@ export default function handler(req, res) {
 
   // Verify JWT token from query or header
   const token = req.query.token || req.headers.authorization?.split(' ')[1]
+  console.log('📡 SSE: token received:', token ? '✅ YES (length: ' + token.length + ')' : '❌ NO')
   
   if (!token) {
     console.log('❌ SSE: no auth token provided')
@@ -24,7 +24,7 @@ export default function handler(req, res) {
   }
 
   try {
-    jwt.verify(token, JWT_SECRET)
+    verifyAdminToken(token)
     console.log('✅ SSE: token verified')
   } catch (err) {
     console.log('❌ SSE: invalid token', err.message)

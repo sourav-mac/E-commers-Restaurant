@@ -7,6 +7,15 @@ import Link from 'next/link'
 export default function AdminSettings() {
   const router = useRouter()
   const [loading, setLoading] = useState(true)
+  const [credentialMessage, setCredentialMessage] = useState(null)
+  const [credentialError, setCredentialError] = useState(null)
+  const [credentialLoading, setCredentialLoading] = useState(false)
+  const [credentials, setCredentials] = useState({
+    currentPassword: '',
+    newUsername: '',
+    newPassword: '',
+    confirmPassword: ''
+  })
   const [settings, setSettings] = useState({
     delivery_fee: 50,
     min_order_value: 0,
@@ -21,14 +30,14 @@ export default function AdminSettings() {
   })
 
   useEffect(() => {
-    const token = localStorage.getItem('adminToken')
+    const token = localStorage.getItem('admin_token')
     if (!token) router.push('/admin/login')
     else fetchSettings()
   }, [])
 
   const fetchSettings = async () => {
     try {
-      const token = localStorage.getItem('adminToken')
+      const token = localStorage.getItem('admin_token')
       const res = await fetch('/api/admin/settings', {
         headers: { 'Authorization': `Bearer ${token}` }
       })
@@ -44,7 +53,7 @@ export default function AdminSettings() {
   const handleSaveSettings = async (e) => {
     e.preventDefault()
     try {
-      const token = localStorage.getItem('adminToken')
+      const token = localStorage.getItem('admin_token')
       const res = await fetch('/api/admin/settings', {
         method: 'POST',
         headers: {
@@ -61,6 +70,57 @@ export default function AdminSettings() {
       console.error('Failed to save settings:', err)
       alert('Failed to save settings')
     }
+  }
+
+  const handleChangeCredentials = async (e) => {
+    e.preventDefault()
+    setCredentialError(null)
+    setCredentialMessage(null)
+    setCredentialLoading(true)
+
+    try {
+      const token = localStorage.getItem('admin_token')
+      
+      // Check if at least one field is being changed
+      if (!credentials.newUsername && !credentials.newPassword) {
+        setCredentialError('Please enter new username or password to change')
+        setCredentialLoading(false)
+        return
+      }
+
+      const res = await fetch('/api/admin/change-credentials', {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          currentPassword: credentials.currentPassword,
+          newUsername: credentials.newUsername || null,
+          newPassword: credentials.newPassword || null,
+          confirmPassword: credentials.confirmPassword || null
+        })
+      })
+
+      const data = await res.json()
+
+      if (res.ok) {
+        setCredentialMessage('✅ Credentials updated successfully!')
+        setCredentials({
+          currentPassword: '',
+          newUsername: '',
+          newPassword: '',
+          confirmPassword: ''
+        })
+        setTimeout(() => setCredentialMessage(null), 5000)
+      } else {
+        setCredentialError(data.error || 'Failed to update credentials')
+      }
+    } catch (err) {
+      console.error('Failed to change credentials:', err)
+      setCredentialError('Connection error. Please try again.')
+    }
+    setCredentialLoading(false)
   }
 
   if (loading) return <div className="flex items-center justify-center min-h-screen text-[var(--petuk-orange)]">Loading...</div>
@@ -214,6 +274,115 @@ export default function AdminSettings() {
           >
             Save Settings
           </button>
+        </form>
+
+        {/* SECURITY: Change Admin Credentials */}
+        <form onSubmit={handleChangeCredentials} className="mt-12 flex justify-center">
+          <div className="relative w-full max-w-sm p-8 bg-[var(--petuk-charcoal)] rounded-lg shadow-lg overflow-hidden">
+            {/* Decorative Element */}
+            <div className="absolute top-0 right-0 w-40 h-40 bg-gradient-to-br from-[var(--petuk-orange-light)] to-[var(--petuk-orange)] rounded-full transform translate-x-16 -translate-y-16 opacity-20"></div>
+
+            {/* Header */}
+            <div className="relative z-10 mb-8">
+              <h2 className="text-3xl font-bold text-[var(--petuk-offwhite)] mb-1">Admin Security</h2>
+              <p className="text-sm text-gray-400">Change your credentials securely</p>
+            </div>
+
+            {/* Current Password (Required) */}
+            <div className="relative z-10 mb-6">
+              <div className="flex items-center relative">
+                <svg className="absolute left-3 w-5 h-5 text-[var(--petuk-orange)]" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16">
+                  <path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/>
+                </svg>
+                <input
+                  type="password"
+                  value={credentials.currentPassword}
+                  onChange={(e) => setCredentials({ ...credentials, currentPassword: e.target.value })}
+                  placeholder="Current password"
+                  required
+                  className="w-full h-10 pl-10 pr-4 bg-transparent border-b-2 border-gray-600 text-[var(--petuk-offwhite)] placeholder-gray-500 focus:outline-none focus:border-[var(--petuk-orange)] transition-colors text-sm font-medium"
+                />
+              </div>
+              <p className="text-xs text-gray-500 mt-1 pl-8">Required to verify your identity</p>
+            </div>
+
+            {/* New Username */}
+            <div className="relative z-10 mb-6">
+              <div className="flex items-center relative">
+                <svg className="absolute left-3 w-5 h-5 text-[var(--petuk-orange)]" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16">
+                  <path d="M13.106 7.222c0-2.967-2.249-5.032-5.482-5.032-3.35 0-5.646 2.318-5.646 5.702 0 3.493 2.235 5.708 5.762 5.708.862 0 1.689-.123 2.304-.335v-.862c-.43.199-1.354.328-2.29.328-2.926 0-4.813-1.88-4.813-4.798 0-2.844 1.921-4.881 4.594-4.881 2.735 0 4.608 1.688 4.608 4.156 0 1.682-.554 2.769-1.416 2.769-.492 0-.772-.28-.772-.76V5.206H8.923v.834h-.11c-.266-.595-.881-.964-1.6-.964-1.4 0-2.378 1.162-2.378 2.823 0 1.737.957 2.906 2.379 2.906.8 0 1.415-.39 1.709-1.087h.11c.081.67.703 1.148 1.503 1.148 1.572 0 2.57-1.415 2.57-3.643zm-7.177.704c0-1.197.54-1.907 1.456-1.907.93 0 1.524.738 1.524 1.907S8.308 9.84 7.371 9.84c-.895 0-1.442-.725-1.442-1.914z"/>
+                </svg>
+                <input
+                  type="text"
+                  value={credentials.newUsername}
+                  onChange={(e) => setCredentials({ ...credentials, newUsername: e.target.value })}
+                  placeholder="New username"
+                  minLength="3"
+                  className="w-full h-10 pl-10 pr-4 bg-transparent border-b-2 border-gray-600 text-[var(--petuk-offwhite)] placeholder-gray-500 focus:outline-none focus:border-[var(--petuk-orange)] transition-colors text-sm font-medium"
+                />
+              </div>
+              <p className="text-xs text-gray-500 mt-1 pl-8">Min 3 characters • Leave blank to keep current</p>
+            </div>
+
+            {/* New Password */}
+            <div className="relative z-10 mb-6">
+              <div className="flex items-center relative">
+                <svg className="absolute left-3 w-5 h-5 text-[var(--petuk-orange)]" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16">
+                  <path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/>
+                </svg>
+                <input
+                  type="password"
+                  value={credentials.newPassword}
+                  onChange={(e) => setCredentials({ ...credentials, newPassword: e.target.value })}
+                  placeholder="New password"
+                  minLength="12"
+                  className="w-full h-10 pl-10 pr-4 bg-transparent border-b-2 border-gray-600 text-[var(--petuk-offwhite)] placeholder-gray-500 focus:outline-none focus:border-[var(--petuk-orange)] transition-colors text-sm font-medium"
+                />
+              </div>
+              <p className="text-xs text-gray-500 mt-1 pl-8">Min 12 chars • Must include uppercase, lowercase, number & symbol</p>
+            </div>
+
+            {/* Confirm Password */}
+            {credentials.newPassword && (
+              <div className="relative z-10 mb-6">
+                <div className="flex items-center relative">
+                  <svg className="absolute left-3 w-5 h-5 text-[var(--petuk-orange)]" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/>
+                  </svg>
+                  <input
+                    type="password"
+                    value={credentials.confirmPassword}
+                    onChange={(e) => setCredentials({ ...credentials, confirmPassword: e.target.value })}
+                    placeholder="Confirm new password"
+                    className="w-full h-10 pl-10 pr-4 bg-transparent border-b-2 border-gray-600 text-[var(--petuk-offwhite)] placeholder-gray-500 focus:outline-none focus:border-[var(--petuk-orange)] transition-colors text-sm font-medium"
+                  />
+                </div>
+              </div>
+            )}
+
+            {/* Error Message */}
+            {credentialError && (
+              <div className="relative z-10 mb-4 p-3 bg-red-900/30 border border-[var(--petuk-orange)] text-red-300 rounded text-sm font-medium">
+                {credentialError}
+              </div>
+            )}
+
+            {/* Success Message */}
+            {credentialMessage && (
+              <div className="relative z-10 mb-4 p-3 bg-green-900/30 border border-green-700 text-green-300 rounded text-sm font-medium">
+                ✓ {credentialMessage}
+              </div>
+            )}
+
+            {/* Submit Button */}
+            <button
+              type="submit"
+              disabled={credentialLoading}
+              className="relative z-10 w-full mt-8 py-2.5 bg-[var(--petuk-orange)] text-white font-semibold rounded text-sm transition-all hover:bg-[var(--petuk-orange-light)] hover:shadow-lg hover:shadow-[var(--petuk-orange)]/30 disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              {credentialLoading ? 'Updating...' : 'Update Credentials'}
+            </button>
+          </div>
         </form>
       </div>
     </div>

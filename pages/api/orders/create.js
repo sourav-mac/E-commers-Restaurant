@@ -5,6 +5,7 @@ import menu from '../../../data/menu.json'
 import { readData, writeData } from '../../../lib/dataStore'
 import { sendSMS, formatPhoneNumber } from '../../../lib/sms'
 import { broadcastEvent } from '../../../lib/sse'
+import { broadcastNewOrder } from '../../../lib/socketServer'
 
 const razorpay = new Razorpay({
   key_id: process.env.RAZORPAY_KEY_ID || 'rzp_test_RrcPAcvB65TfFu',
@@ -124,6 +125,13 @@ export default async function handler(req, res) {
         console.error('❌ SSE broadcast failed:', err)
       }
 
+      // Broadcast via Socket.IO
+      try {
+        broadcastNewOrder(order)
+      } catch (err) {
+        console.error('❌ Socket.IO broadcast failed:', err)
+      }
+
       return res.status(200).json({
         ok: true,
         order_id,
@@ -179,6 +187,13 @@ Items: ${validatedItems.length}`
     broadcastEvent('new-order', order)
   } catch (err) {
     console.error('❌ SSE broadcast failed:', err)
+  }
+
+  // Broadcast via Socket.IO
+  try {
+    broadcastNewOrder(order)
+  } catch (err) {
+    console.error('❌ Socket.IO broadcast failed:', err)
   }
 
   res.status(200).json({

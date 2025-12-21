@@ -1,6 +1,7 @@
+import { adminApiRoute } from '../../../../lib/adminProtection'
 import { broadcastEvent } from '../../../../lib/sse'
 
-export default function handler(req, res) {
+export default adminApiRoute(async function handler(req, res) {
   console.log('📟 TEST-BROADCAST endpoint called, method:', req.method)
   
   if (req.method !== 'GET') {
@@ -21,4 +22,4 @@ export default function handler(req, res) {
   console.log('✅ Broadcast sent!')
 
   res.status(200).json({ ok: true, sent: sampleOrder })
-}
+})

@@ -1,29 +1,14 @@
 // pages/api/admin/payments.js
-import jwt from 'jsonwebtoken'
+import { adminApiRoute } from '../../../lib/adminProtection'
 import { readData } from '../../../lib/dataStore'
 
-const JWT_SECRET = 'petuk-admin-secret-key-2024'
-
-function verifyToken(token) {
-  try {
-    return jwt.verify(token, JWT_SECRET)
-  } catch (err) {
-    return null
-  }
-}
-
-export default function handler(req, res) {
+export default adminApiRoute(async function handler(req, res) {
   if (req.method !== 'GET') {
     return res.status(405).json({ error: 'Method not allowed' })
   }
 
-  // Verify JWT token
-  const authHeader = req.headers.authorization
-  const token = authHeader?.replace('Bearer ', '')
-
-  if (!token || !verifyToken(token)) {
-    return res.status(401).json({ error: 'Unauthorized' })
-  }
+  // Token already verified by adminApiRoute middleware
+  // req.admin contains authenticated user data
 
   // Read real orders from persistent storage and extract payment info
   const allData = readData('orders') || { orders: [] }
@@ -77,4 +62,4 @@ export default function handler(req, res) {
     success: true,
     payments: payments
   })
-}
+})

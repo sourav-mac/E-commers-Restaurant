@@ -5,10 +5,12 @@ import Header from '../components/Header'
 import Footer from '../components/Footer'
 import NeonCheckbox from '../components/NeonCheckbox'
 import { CartContext } from '../context/CartContext'
+import { useLoading } from '../context/LoadingContext'
 
 export default function CheckoutPage() {
   const router = useRouter()
   const { items, subtotal, tax, delivery_fee, discount, total, clearCart } = useContext(CartContext)
+  const { showLoading, hideLoading } = useLoading()
 
   const [customerName, setCustomerName] = useState('')
   const [customerPhone, setCustomerPhone] = useState('')
@@ -60,12 +62,14 @@ export default function CheckoutPage() {
   const handleSubmit = async (e) => {
     e.preventDefault()
     setIsLoading(true)
+    showLoading('Creating your order...')
     setError('')
 
     // Validate minimum order value
     if (settings.min_order_value && subtotal < settings.min_order_value) {
       setError(`Minimum order value is ₹${settings.min_order_value}. Current order: ₹${subtotal}`)
       setIsLoading(false)
+      hideLoading()
       return
     }
 
@@ -73,6 +77,7 @@ export default function CheckoutPage() {
     if (!customerName.trim() || !customerPhone.trim()) {
       setError('Name and phone number are required')
       setIsLoading(false)
+      hideLoading()
       return
     }
 
@@ -80,12 +85,14 @@ export default function CheckoutPage() {
     if (!/^\d{10}$/.test(customerPhone.trim())) {
       setError('Phone number must be exactly 10 digits')
       setIsLoading(false)
+      hideLoading()
       return
     }
 
     if (!address.trim()) {
       setError('Delivery address is required')
       setIsLoading(false)
+      hideLoading()
       return
     }
 
@@ -115,6 +122,7 @@ export default function CheckoutPage() {
         console.error('Order creation error:', data)
         setError(errorMsg)
         setIsLoading(false)
+        hideLoading()
         return
       }
 
@@ -130,11 +138,13 @@ export default function CheckoutPage() {
       } else {
         // COD - Order confirmed
         clearCart()
+        hideLoading()
         router.push(`/order-confirmation?order_id=${data.order_id}`)
       }
     } catch (err) {
       setError('Failed to create order: ' + err.message)
       setIsLoading(false)
+      hideLoading()
     }
   }
 
@@ -169,19 +179,23 @@ export default function CheckoutPage() {
 
           if (verifyResponse.ok) {
             clearCart()
+            hideLoading()
             router.push(`/order-confirmation?order_id=${orderData.order_id}`)
           } else {
             setError('Payment verification failed: ' + verifyData.error)
             setIsLoading(false)
+            hideLoading()
           }
         } catch (err) {
           setError('Payment verification error: ' + err.message)
           setIsLoading(false)
+          hideLoading()
         }
       },
       modal: {
         ondismiss: () => {
           setIsLoading(false)
+          hideLoading()
         }
       }
     }

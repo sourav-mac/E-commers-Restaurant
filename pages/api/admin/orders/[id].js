@@ -1,17 +1,7 @@
 // pages/api/admin/orders/[id].js
-import jwt from 'jsonwebtoken'
+import { adminApiRoute } from '../../../../lib/adminProtection'
 import { readData, writeData } from '../../../../lib/dataStore'
 import { sendSMS, formatPhoneNumber } from '../../../../lib/sms'
-
-const JWT_SECRET = 'petuk-admin-secret-key-2024'
-
-function verifyToken(token) {
-  try {
-    return jwt.verify(token, JWT_SECRET)
-  } catch (err) {
-    return null
-  }
-}
 
 const statusMessages = {
   confirmed: {
@@ -36,16 +26,11 @@ const statusMessages = {
   }
 }
 
-export default function handler(req, res) {
+export default adminApiRoute(async function handler(req, res) {
   const { id } = req.query
 
-  // Verify JWT token
-  const authHeader = req.headers.authorization
-  const token = authHeader?.replace('Bearer ', '')
-
-  if (!token || !verifyToken(token)) {
-    return res.status(401).json({ error: 'Unauthorized' })
-  }
+  // Token already verified by adminApiRoute middleware
+  // req.admin contains authenticated user data
 
   if (req.method === 'GET') {
     const allData = readData('orders') || { orders: [] }
@@ -129,4 +114,4 @@ Thank you!`
   }
 
   return res.status(405).json({ error: 'Method not allowed' })
-}
+})

@@ -1,7 +1,11 @@
 import { useEffect, useState } from 'react'
+import { useRouter } from 'next/router'
+import { useLoading } from '../context/LoadingContext'
 import OpenStatus from './OpenStatus'
 
 export default function Hero(){
+  const router = useRouter()
+  const { showLoading } = useLoading()
   const [openingTime, setOpeningTime] = useState('11:00')
   const [closingTime, setClosingTime] = useState('22:00')
   const [reviewCount, setReviewCount] = useState(0)
@@ -40,6 +44,12 @@ export default function Hero(){
     return () => clearInterval(interval)
   }, [])
 
+  const handleReserveClick = (e) => {
+    e.preventDefault()
+    showLoading('Opening reservation page...')
+    router.push('/reserve')
+  }
+
   return (
     <section className="card mt-6 overflow-hidden">
       <div className="flex flex-col md:flex-row gap-6">
@@ -52,9 +62,9 @@ export default function Hero(){
           <p className="mt-3 text-[var(--petuk-offwhite)]">Cozy dine-in, quick drive-through, and reliable delivery. ₹200–₹400 per person.</p>
 
           <div className="mt-6 flex flex-wrap gap-3">
-            <a href="tel:09647497019" className="btn-uiverse">Call Now / কল করুন</a>
+            <a href="tel:09832358231" className="btn-uiverse">Call Now / কল করুন</a>
             <a href="/menu" className="btn-uiverse">Order Online</a>
-            <a href="/reserve" className="btn-uiverse-outline">Reserve Table</a>
+            <button onClick={handleReserveClick} className="btn-uiverse-outline">Reserve Table</button>
           </div>
 
           <div className="mt-6 flex items-center gap-4 flex-wrap">
